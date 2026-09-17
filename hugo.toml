@@ -1,0 +1,4 @@
+baseURL = "https://chen841115.github.io/"
+languageCode = "zh-tw"
+title = "我的部落格"
+theme = "PaperMod"
