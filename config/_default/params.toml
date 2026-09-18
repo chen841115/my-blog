@@ -1,0 +1,10 @@
+[sidebar]
+  emoji = "👋"
+
+[article]
+  math = false
+  toc = true
+  readingTime = true
+
+[comments]
+  enabled = false

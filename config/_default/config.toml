@@ -1,0 +1,13 @@
+baseURL = "http://localhost:1313/"
+languageCode = "zh-tw"
+title = "我的部落格"
+theme = "github.com/CaiJimmy/hugo-theme-stack/v4"
+
+defaultContentLanguage = "zh-tw"
+hasCJKLanguage = true
+
+[pagination]
+  pagerSize = 10
+
+[permalinks]
+  post = "/p/:slug/"
