@@ -1,5 +1,5 @@
-baseURL = "http://localhost:1313/"
-languageCode = "zh-tw"
+baseURL = "https://chengchih.me/"
+languageCode = "zh-hant-tw"
 title = "我的部落格"
 theme = "github.com/CaiJimmy/hugo-theme-stack/v4"
 

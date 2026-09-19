@@ -4,5 +4,5 @@
         <link>http://localhost:1313/tags/</link>
         <description>Recent content in Tags on 我的部落格</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>zh-tw</language><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" /></channel>
+        <language>zh-hant-tw</language><atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" /></channel>
 </rss>
