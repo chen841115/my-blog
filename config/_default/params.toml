@@ -8,3 +8,6 @@
 
 [comments]
   enabled = false
+
+[[widgets.page]]
+type = "toc"

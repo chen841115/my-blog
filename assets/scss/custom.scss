@@ -336,7 +336,7 @@ a {
 
                 border-radius: 10px;
 
-                font-size: 1.91rem;
+                font-size: 2rem;
 
                 color: var(--ds-text-secondary);
 
@@ -577,8 +577,19 @@ a {
  * 19. Horizontal rule
  * ---------------------------------------------------------- */
 
-.article-content hr {
-    border-color: var(--ds-border);
+.article-content {
+    hr {
+        width: 90%;
+        height: 1px;
+
+        margin: 5.5rem auto;
+
+        border: 0;
+
+        background: var(--ds-border-green);
+
+        opacity: 1;
+    }
 }
 
 

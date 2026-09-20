@@ -5,11 +5,11 @@
         <description>Recent content in Posts on 我的部落格</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-hant-tw</language>
-        <lastBuildDate>Fri, 18 Sep 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" /><item>
-            <title>Hello World</title>
-            <link>http://localhost:1313/p/hello-world/</link>
-            <pubDate>Fri, 18 Sep 2026 00:00:00 +0000</pubDate>
-            <guid>http://localhost:1313/p/hello-world/</guid>
-            <description>&lt;h1 id=&#34;歡迎來到我的部落格&#34;&gt;歡迎來到我的部落格&#xA;&lt;/h1&gt;&lt;p&gt;這是使用 Hugo + Stack Theme 建立的第一篇文章。&lt;/p&gt;&#xA;&lt;h2 id=&#34;為什麼使用-hugo&#34;&gt;為什麼使用 Hugo？&#xA;&lt;/h2&gt;&lt;ul&gt;&#xA;&lt;li&gt;靜態網站，速度快&lt;/li&gt;&#xA;&lt;li&gt;Markdown 寫作&lt;/li&gt;&#xA;&lt;li&gt;可以使用 Git 管理&lt;/li&gt;&#xA;&lt;li&gt;適合部署到各種靜態網站平台&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;</description>
+        <lastBuildDate>Mon, 21 Sep 2026 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/post/index.xml" rel="self" type="application/rss+xml" /><item>
+            <title>為什麼開始寫部落格</title>
+            <link>http://localhost:1313/p/%E7%82%BA%E4%BB%80%E9%BA%BC%E9%96%8B%E5%A7%8B%E5%AF%AB%E9%83%A8%E8%90%BD%E6%A0%BC/</link>
+            <pubDate>Mon, 21 Sep 2026 00:00:00 +0000</pubDate>
+            <guid>http://localhost:1313/p/%E7%82%BA%E4%BB%80%E9%BA%BC%E9%96%8B%E5%A7%8B%E5%AF%AB%E9%83%A8%E8%90%BD%E6%A0%BC/</guid>
+            <description>&lt;h2 id=&#34;歡迎來到我的部落格&#34;&gt;歡迎來到我的部落格&#xA;&lt;/h2&gt;&lt;p&gt;這是使用 Hugo + Stack Theme 建立的第一篇文章。&lt;/p&gt;&#xA;&lt;h2 id=&#34;為什麼使用-hugo&#34;&gt;為什麼使用 Hugo？&#xA;&lt;/h2&gt;&lt;ul&gt;&#xA;&lt;li&gt;靜態網站，速度快&lt;/li&gt;&#xA;&lt;li&gt;Markdown 寫作&lt;/li&gt;&#xA;&lt;li&gt;可以使用 Git 管理&lt;/li&gt;&#xA;&lt;li&gt;適合部署到各種靜態網站平台&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;</description>
         </item></channel>
 </rss>

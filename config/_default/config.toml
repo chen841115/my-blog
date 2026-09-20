@@ -11,3 +11,8 @@ hasCJKLanguage = true
 
 [permalinks]
   post = "/p/:slug/"
+
+[markup.tableOfContents]
+startLevel = 2
+endLevel = 3
+ordered = false

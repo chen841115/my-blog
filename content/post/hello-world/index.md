@@ -1,11 +1,11 @@
 ---
-title: "Hello World"
-description: "我的第一篇 Hugo 部落格文章"
-date: 2026-09-18
+title: "為什麼開始寫部落格"
+description: "寫部落格的契機"
+date: 2026-09-21
 draft: false
 ---
 
-# 歡迎來到我的部落格
+## 歡迎來到我的部落格
 
 這是使用 Hugo + Stack Theme 建立的第一篇文章。
 
