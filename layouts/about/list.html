@@ -1,0 +1,23 @@
+{{ define "main" }}
+    <article class="main-article">
+        <header class="article-header">
+            <div class="article-details">
+                <h1 class="article-title">
+                    {{ .Title }}
+                </h1>
+
+                {{ with .Description }}
+                    <h2 class="article-subtitle">
+                        {{ . }}
+                    </h2>
+                {{ end }}
+            </div>
+        </header>
+
+        <section class="article-content">
+            {{ .Content }}
+        </section>
+    </article>
+
+    {{ partial "footer/footer" . }}
+{{ end }}
