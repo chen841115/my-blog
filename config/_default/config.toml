@@ -10,7 +10,7 @@ hasCJKLanguage = true
   pagerSize = 10
 
 [permalinks]
-  post = "/p/:slug/"
+  post = "/:slug/"
 
 [markup.tableOfContents]
 startLevel = 2
