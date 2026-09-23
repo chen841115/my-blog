@@ -1,6 +1,6 @@
 baseURL = "https://blog.chengchih.me/"
 languageCode = "zh-hant-tw"
-title = "我的部落格"
+title = "Cheng-Chih 的部落格"
 theme = "github.com/CaiJimmy/hugo-theme-stack/v4"
 
 defaultContentLanguage = "zh-tw"
