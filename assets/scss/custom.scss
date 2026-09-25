@@ -736,3 +736,95 @@ YT
     border: 0;
     border-radius: 12px;
 }
+
+/* =========================
+   Trip Route
+   ========================= */
+
+.trip-route1 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    max-width: 560px;        // 限制整體寬度
+    margin: 18px auto;       // 置中
+
+    gap: 16px;
+}
+
+.trip-route-day {
+    padding: 12px;
+    background: var(--card-background);
+    border-radius: 10px;
+    border: 1px solid var(--card-separator-color);
+    font-size: 0.9em;
+}
+
+.trip-route-title {
+    font-size: 1.2em;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.trip-route-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 4px 6px;
+
+    border-radius: 6px;
+    font-size: 0.92em;
+    background: var(--body-background);
+
+    text-align: center;
+    font-weight: 600;
+}
+
+.trip-route-step small {
+    margin-top: 4px;
+    opacity: 0.65;
+    font-weight: 400;
+}
+
+.trip-route-icon {
+    font-size: 1.0em;
+    margin-bottom: 1px;
+}
+
+.trip-route-arrow {
+    text-align: center;
+    font-size: 0.8em;
+    opacity: 0.8;
+    margin: 1px 0;
+}
+
+.trip-route-optional {
+    border: 1px dashed var(--accent-color);
+}
+.trip-note {
+    text-align: center;
+
+    max-width: 760px;
+    margin: -8px auto 24px;
+
+    font-size: 0.85em;
+    opacity: 1;
+}
+
+/* =========================
+   Mobile
+   ========================= */
+
+@media (max-width: 768px) {
+
+    .trip-route1{
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .trip-route-day{
+        padding: 18px;
+    }
+}
