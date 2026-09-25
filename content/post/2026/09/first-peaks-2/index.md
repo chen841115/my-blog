@@ -1,9 +1,9 @@
 ---
-title: 'First Peaks 2'
-date: '2026-09-25T05:54:19Z'
+title: '百岳初探（二）'
+date: '2026-09-26'
 slug: 'first-peaks-2'
 description: ""
-draft: true
+draft: false
 
 categories: []
 tags: []

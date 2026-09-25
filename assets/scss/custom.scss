@@ -230,7 +230,7 @@ a {
 
         border-radius: 999px !important;
 
-        font-size: 0.74rem;
+        font-size: 1.5rem;
 
         font-weight: 600;
 
@@ -245,14 +245,20 @@ a {
 /* ------------------------------------------------------------
  * 8. Tags
  * ---------------------------------------------------------- */
-
 .article-tags {
     a {
-        border-color: var(--ds-border);
+        display: inline-block;
 
-        color: var(--ds-text-secondary);
+        padding: 0.3rem 0.75rem;
 
+        border: 1px solid var(--ds-border);
         border-radius: 999px;
+
+        background: var(--ds-surface-soft);
+        color: var(--ds-text-strong);
+
+        font-size: 1.5rem;
+        font-weight: 600;
 
         transition:
             color var(--ds-transition),
@@ -261,9 +267,7 @@ a {
 
         &:hover {
             background: var(--ds-primary-soft);
-
             color: var(--ds-primary);
-
             border-color: var(--ds-primary);
         }
     }
