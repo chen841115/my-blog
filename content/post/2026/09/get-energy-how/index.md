@@ -3,7 +3,7 @@ title: '得到能量的方法'
 date: '2026-09-25'
 slug: 'get-energy-how'
 description: ""
-draft: true
+draft: false
 
 categories: [雜談, 日常生活]
 tags: [murmur]
