@@ -7,7 +7,6 @@ draft: false
 
 categories: [日常生活]
 tags: [廢文]
-hideFromHome: false
 ---
 
 *廢文注意*
