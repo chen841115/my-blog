@@ -1,0 +1,73 @@
+{{ define "main" }}
+
+    {{/* 首頁介紹 */}}
+    {{ with .Content }}
+        <article class="home-intro">
+            {{ . }}
+        </article>
+    {{ end }}
+
+
+    {{/* 各分類最新兩篇文章 */}}
+    {{ $categories := site.Taxonomies.categories.Alphabetical }}
+
+    {{ range $categories }}
+
+        {{ $categoryPage := .Page }}
+
+        {{/* 只取得 post 區域的文章 */}}
+        {{ $posts := where .Pages "Section" "post" }}
+
+        {{/* 日期由新到舊，只取兩篇 */}}
+        {{ $posts = first 2 $posts.ByDate.Reverse }}
+
+        {{ if $posts }}
+
+            <section class="home-category-section">
+
+                <header class="home-category-header">
+
+                    <h2>
+                        <a href="{{ $categoryPage.RelPermalink }}">
+                            {{ $categoryPage.LinkTitle }}
+                        </a>
+                    </h2>
+
+                    <a
+                        class="home-category-more"
+                        href="{{ $categoryPage.RelPermalink }}"
+                    >
+                        查看全部 →
+                    </a>
+
+                </header>
+
+                <div class="article-list">
+
+                    {{ range $posts }}
+
+                        {{ partial "article-list/default" . }}
+
+                    {{ end }}
+
+                </div>
+
+            </section>
+
+        {{ end }}
+
+    {{ end }}
+
+
+    {{- partial "footer/footer" . -}}
+
+{{ end }}
+
+
+{{ define "right-sidebar" }}
+
+    {{ partial "sidebar/right.html"
+        (dict "Context" . "Scope" "homepage")
+    }}
+
+{{ end }}

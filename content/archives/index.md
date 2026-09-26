@@ -1,9 +1,9 @@
 ---
-title: "文章封存"
+title: "所有文章"
 layout: "archives"
 menu:
   main:
-    name: 封存
+    name: 文章
     weight: -70
     params:
       icon: archives

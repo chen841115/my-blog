@@ -2,6 +2,7 @@
 title: "關於我"
 description: "Cheng Chih的介紹"
 layout: "about"
+toc: true
 menu:
   main:
     name: 關於我
@@ -26,9 +27,10 @@ cheng-chih，老家在台中，大學碩士在台南待了6年半，畢業後在
 - 2026年八月開始建自己的部落格 -> [為什麼開始寫部落格]({{< relref "/post/why-blog" >}})
 - 有另一個面向的自己
 
+--- 
 
 ## 下班後做什麼
-- **[音樂]({{< relref "/about/hobbies/music" >}})、YT、看劇**  
+- **[音樂]({{< relref "/about/hobbies/music" >}})、YT、[看劇]({{< relref "/about/hobbies/media" >}})**  
 大概就普通人那些。
 - **棒球**  
 爪迷，前幾年花在球衣的錢是日常置裝費用的兩倍。

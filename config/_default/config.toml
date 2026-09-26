@@ -16,3 +16,35 @@ hasCJKLanguage = true
 startLevel = 2
 endLevel = 3
 ordered = false
+
+[[menu.main]]
+identifier = "daily-life"
+name = "日常生活"
+url = "/categories/日常生活/"
+weight = -70
+[menu.main.params]
+icon = "battery"
+
+[[menu.main]]
+identifier = "misc"
+name = "雜談"
+url = "/categories/雜談/"
+weight = -60
+[menu.main.params]
+icon = "think"
+
+[[menu.social]]
+identifier = "rss"
+name = "RSS"
+url = "/index.xml"
+
+[menu.social.params]
+icon = "rss"
+
+[[menu.social]]
+identifier = "email"
+name = "Email"
+url = "mailto:contact@chengchih.me"
+
+[menu.social.params]
+icon = "email"

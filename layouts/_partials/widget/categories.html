@@ -1,0 +1,48 @@
+{{- $context := .Context -}}
+{{- $taxonomy := index $context.Site.Taxonomies "categories" -}}
+{{- $taxonomyPage := $taxonomy.Page -}}
+{{- $limit := default 10 .Params.limit -}}
+
+<section class="widget categories-widget">
+
+    <div class="widget-icon">
+        {{ partial "helper/icon" "categories" }}
+    </div>
+
+    <h2 class="widget-title section-title">
+        {{ if $taxonomyPage }}
+            <a href="{{ $taxonomyPage.RelPermalink }}">
+                {{ T "widget.categoriesCloud.title" }}
+            </a>
+        {{ else }}
+            {{ T "widget.categoriesCloud.title" }}
+        {{ end }}
+    </h2>
+
+    <div class="categories-list">
+
+        {{ range first $limit $taxonomy.ByCount }}
+
+            <a
+                class="category-item"
+                data-name="{{ .Page.Title }}"
+                href="{{ .Page.RelPermalink }}"
+            >
+
+                <span class="category-marker"></span>
+
+                <span class="category-name">
+                    {{ .Page.Title }}
+                </span>
+
+                <span class="category-count">
+                    {{ .Count }}
+                </span>
+
+            </a>
+
+        {{ end }}
+
+    </div>
+
+</section>

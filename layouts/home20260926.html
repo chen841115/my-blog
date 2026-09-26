@@ -1,0 +1,60 @@
+{{ define "main" }}
+    {{ with .Content }}
+        <article class="home-intro">
+            {{ . }}
+        </article>
+    {{ end }}
+    {{/* 各分類最新文章 */}}
+    {{ with site.GetPage "/categories" }}
+
+        {{ range .Pages.ByTitle }}
+
+            {{ $posts := first 2 .Pages.ByDate.Reverse }}
+
+            {{ if $posts }}
+
+                <section class="home-category-section">
+
+                    <header class="home-category-header">
+
+                        <h2>
+                            <a href="{{ .RelPermalink }}">
+                                {{ .LinkTitle }}
+                            </a>
+                        </h2>
+
+                        <a
+                            class="home-category-more"
+                            href="{{ .RelPermalink }}"
+                        >
+                            查看全部 →
+                        </a>
+
+                    </header>
+
+
+                    <div class="article-list">
+
+                        {{ range $posts }}
+
+                            {{ partial "article-list/default" . }}
+
+                        {{ end }}
+
+                    </div>
+
+                </section>
+
+            {{ end }}
+
+        {{ end }}
+
+    {{ end }}
+
+
+    {{- partial "footer/footer" . -}}
+{{ end }}
+
+{{ define "right-sidebar" }}
+    {{ partial "sidebar/right.html" (dict "Context" . "Scope" "homepage") }}
+{{ end }}

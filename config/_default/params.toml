@@ -1,13 +1,31 @@
+mainSections = ["post"]
+
 [sidebar]
-  emoji = "👋"
+emoji = "👋"
 
 [article]
-  math = false
-  toc = true
-  readingTime = true
+math = false
+toc = true
+readingTime = true
 
 [comments]
-  enabled = false
+enabled = false
 
-[[widgets.page]]
-type = "toc"
+[widgets]
+homepage = [
+    { type = "search" },
+    { type = "archives", params = { limit = 5 } },
+    { type = "categories", params = { limit = 10 } },
+    { type = "tag-cloud", params = { limit = 10 } },
+]
+
+page = [
+    { type = "toc" },
+    { type = "archives", params = { limit = 5 } },
+    { type = "categories", params = { limit = 10 } },
+]
+
+about = [
+    { type = "toc" },
+    { type = "archives", params = { limit = 3 } }
+]
