@@ -18,6 +18,9 @@
         {{/* 只取得 post 區域的文章 */}}
         {{ $posts := where .Pages "Section" "post" }}
 
+        {{/* 排除不希望出現在首頁的文章 */}}
+        {{ $posts = where $posts "Params.hideFromHome" "ne" true }}
+
         {{/* 日期由新到舊，只取兩篇 */}}
         {{ $posts = first 2 $posts.ByDate.Reverse }}
 
