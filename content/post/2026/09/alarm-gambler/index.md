@@ -1,6 +1,6 @@
 ---
 title: '鬧鐘賭鬼'
-date: '2026-09-27'
+date: '2026-09-26'
 slug: 'alarm-gambler'
 description: ""
 draft: false
