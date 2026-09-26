@@ -3,7 +3,7 @@ title: '百岳初探（二）'
 date: '2026-09-26'
 slug: 'first-peaks-2'
 description: ""
-draft: false
+draft: true
 
 categories: []
 tags: []
