@@ -1,0 +1,29 @@
+{{ if or .Params.prevPost .Params.nextPost }}
+
+<nav class="series-nav" aria-label="系列文章導覽">
+
+    <div class="series-nav__prev">
+        {{ with .Params.prevPost }}
+            {{ with site.GetPage . }}
+                <a href="{{ .RelPermalink }}">
+                    <span>← 上一篇</span>
+                    <strong>{{ .LinkTitle }}</strong>
+                </a>
+            {{ end }}
+        {{ end }}
+    </div>
+
+    <div class="series-nav__next">
+        {{ with .Params.nextPost }}
+            {{ with site.GetPage . }}
+                <a href="{{ .RelPermalink }}">
+                    <span>下一篇 →</span>
+                    <strong>{{ .LinkTitle }}</strong>
+                </a>
+            {{ end }}
+        {{ end }}
+    </div>
+
+</nav>
+
+{{ end }}

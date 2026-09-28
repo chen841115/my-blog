@@ -48,3 +48,24 @@ url = "mailto:contact@chengchih.me"
 
 [menu.social.params]
 icon = "email"
+
+[related]
+includeNewer = true
+threshold = 50
+toLower = true
+
+[[related.indices]]
+name = "tags"
+weight = 100
+
+[[related.indices]]
+name = "categories"
+weight = 70
+
+[[related.indices]]
+name = "series"
+weight = 200
+
+[[related.indices]]
+name = "date"
+weight = 10

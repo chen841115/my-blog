@@ -1,6 +1,6 @@
 ---
 title: 'FOMO'
-date: '2026-09-26T14:33:33Z'
+date: '2026-09-28'
 slug: 'FOMO'
 description: ""
 draft: true

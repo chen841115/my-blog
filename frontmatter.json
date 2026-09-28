@@ -69,14 +69,6 @@
     {
       "title": "about",
       "path": "[[workspace]]/content/about"
-    },
-    {
-      "title": "posts",
-      "path": "[[workspace]]/content/posts"
-    },
-    {
-      "title": "hello-world",
-      "path": "[[workspace]]/content/post/hello-world"
     }
   ]
 }

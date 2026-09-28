@@ -955,6 +955,157 @@ select:focus-visible {
     }
 }
 
+/* ==========================================
+   TOC / 目錄：簡化版風格
+   ========================================== */
+
+/* 隱藏「目錄」Widget 上方的 # icon */
+.right-sidebar {
+    section.widget:has(.widget--toc) {
+        > .widget-icon {
+            display: none !important;
+        }
+    }
+}
+
+
+/* 先把 TOC 這塊的卡片感拿掉 */
+.right-sidebar .widget.toc,
+.right-sidebar .widget--toc,
+.right-sidebar .widget--toc .widget-content,
+.right-sidebar .widget--toc .card-content {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+/* TOC 項目不要左右位移 */
+.right-sidebar #TableOfContents a,
+.right-sidebar #TableOfContents a:hover,
+.right-sidebar #TableOfContents a:focus,
+.right-sidebar #TableOfContents a:active {
+    transform: none !important;
+    margin-left: 0 !important;
+    left: auto !important;
+}
+
+/* 真正的 TOC 區塊 */
+.right-sidebar #TableOfContents {
+    margin-top: 0.75rem;
+    padding-left: 1.1rem;
+
+    border-left: 2px solid rgba(120, 128, 122, 0.22);
+}
+
+/* 拿掉預設 ul / li 樣式 */
+.right-sidebar #TableOfContents ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.right-sidebar #TableOfContents li {
+    margin: 0;
+    padding: 0;
+}
+
+/* 每一個目錄項目 */
+.right-sidebar #TableOfContents a {
+    display: block;
+
+    padding: 0.45rem 0;
+
+    color: var(--ds-text-secondary);
+    text-decoration: none;
+
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.6;
+
+    transition:
+        color var(--ds-transition),
+        transform var(--ds-transition);
+}
+
+/* hover */
+.right-sidebar #TableOfContents a:hover {
+    color: var(--ds-text-strong);
+}
+.right-sidebar #TableOfContents a {
+    transition:
+        color 180ms ease,
+        opacity 180ms ease;
+}
+
+.right-sidebar #TableOfContents a:hover {
+    color: var(--ds-primary);
+}
+
+/* 如果有第二層(H3)，做得再淡一點 */
+.right-sidebar #TableOfContents ul ul {
+    margin-top: 0.15rem;
+    margin-left: 0.7rem;
+}
+
+.right-sidebar #TableOfContents ul ul a {
+    padding: 0.28rem 0;
+
+    font-size: 0.9rem;
+    font-weight: 500;
+
+    color: var(--ds-text-tertiary);
+}
+
+/* 深色模式微調 */
+html[data-scheme="dark"] .right-sidebar #TableOfContents {
+    border-left-color: rgba(255, 255, 255, 0.12);
+}
+
+html[data-scheme="dark"] .right-sidebar #TableOfContents a {
+    color: rgba(255, 255, 255, 0.72);
+}
+
+html[data-scheme="dark"] .right-sidebar #TableOfContents a:hover {
+    color: rgba(255, 255, 255, 0.92);
+}
+
+/* ==========================================
+   TOC：目前閱讀章節
+   ========================================== */
+
+/* 移除 Stack active 項目前面的墨綠直條 */
+.right-sidebar #TableOfContents li.active-class {
+    border-left: 0 !important;
+    border-inline-start: 0 !important;
+    box-shadow: none !important;
+
+    &::before,
+    &::after {
+        display: none !important;
+        content: none !important;
+    }
+
+    > a {
+        border-left: 0 !important;
+        border-inline-start: 0 !important;
+        box-shadow: none !important;
+
+        /* 保留目前章節的墨綠文字提示 */
+        color: var(--ds-primary) !important;
+
+        /* 不要因 active 狀態左右移動 */
+        transform: none !important;
+        margin-left: 0 !important;
+
+        &::before,
+        &::after {
+            display: none !important;
+            content: none !important;
+        }
+    }
+}
+
 /*
 YT
 */
@@ -1072,56 +1223,134 @@ YT
    Archives Widget
    ========================================================== */
 
+/* ==========================================================
+   Archives Widget - Timeline Style
+   ========================================================== */
+
 .right-sidebar {
     .widget.archives {
+
+        /* 拿掉 Stack 原本的大白色卡片 */
         .widget-archive--list {
+            position: relative;
+
             display: flex;
             flex-direction: column;
-            gap: 0.55rem;
+
+            gap: 0;
+
             margin-top: 0.9rem;
+            padding: 0.2rem 0 0.2rem 1.25rem;
+
+            background: transparent !important;
+            border: 0 !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+
+            /* 左側時間軸 */
+            &::before {
+                content: "";
+
+                position: absolute;
+                top: 0.45rem;
+                bottom: 0.45rem;
+                left: 0.25rem;
+
+                width: 1px;
+
+                background: var(--ds-border);
+            }
         }
 
         .archives-year {
+            position: relative;
+
             margin: 0;
+
+            /* 時間軸圓點 */
+            &::before {
+                content: "";
+
+                position: absolute;
+                top: 50%;
+                left: -1.22rem;
+
+                width: 7px;
+                height: 7px;
+
+                border: 2px solid var(--ds-surface);
+                border-radius: 50%;
+
+                background: var(--ds-primary);
+
+                transform: translateY(-50%);
+            }
 
             a {
                 display: flex;
-                justify-content: space-between;
                 align-items: center;
+                justify-content: space-between;
 
-                padding: 1rem 0;
+                //gap: 1rem;
 
-                border: 0;
+                padding: 0.65rem 0.15rem 0.65rem 0.8rem;
+
+                border: 0 !important;
                 border-radius: 0;
-                background: transparent;
-                box-shadow: none;
 
-                border-bottom: 1px dashed var(--ds-border-green);
+                background: transparent !important;
+                box-shadow: none !important;
+
+                color: var(--ds-text);
+
+                transition:
+                    color var(--ds-transition),
+                    padding-left var(--ds-transition);
 
                 &:hover {
-                    background: transparent;
-                    transform: none;
+                    //padding-left: 0.2rem;
+                    color: var(--ds-primary);
+
+                    background: transparent !important;
                 }
             }
 
-            .year {
-                font-size: 1.8rem;
+            /* 多年份時，年份之間有淡線即可 */
+            &:not(:last-child) {
+                border-bottom:
+                    1px solid var(--ds-border);
+            }
+        }
+
+        .year {
+            font-size: 1.5rem;
+            font-weight: 600;
+
+            color: var(--ds-text-strong);
+            &:hover {
+                transform: translateX(0px);
+                   // color: var(--ds-primary);
+            }
+        }
+
+        .count {
+            display: inline-flex;
+            align-items: center;
+
+            font-size: 1.2rem;
+            font-weight: 500;
+
+            color: var(--ds-text-secondary);
+
+            &::after {
+                content: " 篇";
+
+                margin-left: 0.15rem;
+
+                font-size: 1.2rem;
                 font-weight: 400;
-                color: var(--ds-text-strong);
-            }
 
-            .count {
-                font-size: 1.5rem;
-                font-weight: 600;
-
-                color: var(--ds-primary);
-
-                &::after {
-                    content: " 篇";
-                    font-size: 0.8em;
-                    font-weight: 500;
-                    opacity: 0.8;
-                }
+                opacity: 0.8;
             }
         }
     }
@@ -1275,5 +1504,137 @@ html[data-scheme="dark"] {
                 color: var(--ds-primary);
             }
         }
+    }
+}
+
+/*punchline*/
+.punchline-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+
+    gap: 2rem;
+
+    margin: 2rem 0;
+}
+
+.punchline-main {
+    padding: 0.1em 0.25em;
+
+    background: #fff36a;
+
+    color: #111;
+
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.punchline-note {
+    margin-left: auto;
+
+    white-space: nowrap;
+
+    color: var(--ds-text-secondary);
+
+    font-size: 1.5rem;
+}
+
+/* 手機版 */
+@media (max-width: 680px) {
+    .punchline-row {
+        flex-direction: column;
+        align-items: flex-start;
+
+        gap: 0.75rem;
+    }
+
+    .punchline-note {
+        margin-left: 0;
+        white-space: normal;
+    }
+}
+
+/*series*/
+.series-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 1.25rem;
+
+    margin: 3rem 0;
+
+    a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        gap: 0.3rem;
+
+        min-height: 50px;
+
+        padding: 1.25rem 1.0rem;
+
+        border: 1px solid var(--ds-border);
+        border-radius: 16px;
+
+        background: rgba(255, 253, 248, 0.92);
+
+        color: var(--ds-text);
+
+        box-shadow:
+            0 4px 16px rgba(50, 60, 52, 0.04);
+
+        transition:
+            border-color var(--ds-transition),
+            background-color var(--ds-transition),
+            transform var(--ds-transition),
+            box-shadow var(--ds-transition);
+
+        &:hover {
+            border-color: var(--ds-border-green);
+
+            background: var(--ds-primary-soft);
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 7px 20px rgba(50, 60, 52, 0.07);
+        }
+
+        span {
+            font-size: 1.5rem;
+            font-weight: 500;
+
+            color: var(--ds-text-secondary);
+        }
+
+        strong {
+            font-size: 1.6rem;
+            font-weight: 650;
+
+            line-height: 1.45;
+
+            color: var(--ds-text-strong);
+        }
+    }
+}
+
+.series-nav__next {
+    text-align: right;
+}
+
+@media (max-width: 680px) {
+    .series-nav {
+        grid-template-columns: 1fr;
+
+        a {
+            min-height: 95px;
+
+            padding: 1.1rem 1.25rem;
+        }
+    }
+
+    .series-nav__next {
+        text-align: left;
     }
 }

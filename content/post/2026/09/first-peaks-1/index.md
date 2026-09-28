@@ -6,6 +6,9 @@ draft: false
 
 categories: [日常生活]
 tags: [運動, 登山, 百岳]
+
+series: "first-peaks"
+nextPost: "/post/2026/09/first-peaks-2"
 ---
 
 ## 準備
@@ -29,4 +32,3 @@ tags: [運動, 登山, 百岳]
 
 {{< trip-route1 >}}
 
-## Day1
