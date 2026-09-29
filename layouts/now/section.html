@@ -1,0 +1,53 @@
+{{ define "main" }}
+
+<section class="now-page">
+
+    <header class="now-page__header">
+        <h1>{{ .Title }}</h1>
+    </header>
+
+    {{ with .Content }}
+    <div class="now-page__content article-content">
+        {{ . }}
+    </div>
+    {{ end }}
+
+    {{ if .Pages }}
+    <section class="now-archive">
+
+        <h2>歷次近況</h2>
+
+        <div class="now-archive__list">
+            {{ range .Pages.ByDate.Reverse }}
+
+            <a
+                class="now-archive__item"
+                href="{{ .RelPermalink }}"
+            >
+                <span class="now-archive__title">
+                    {{ .Title }}
+                </span>
+
+                <span class="now-archive__arrow">
+                    →
+                </span>
+            </a>
+
+            {{ end }}
+        </div>
+
+    </section>
+    {{ end }}
+
+</section>
+
+{{- partial "footer/footer" . -}}
+
+{{ end }}
+
+
+{{ define "right-sidebar" }}
+
+{{ partial "sidebar/right.html" (dict "Context" . "Scope" "page") }}
+
+{{ end }}

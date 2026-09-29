@@ -1638,3 +1638,413 @@ html[data-scheme="dark"] {
         text-align: left;
     }
 }
+
+/* ==========================================================
+   Personal Ticker
+   ========================================================== */
+
+.personal-ticker {
+    overflow: hidden;
+
+    margin: 1.6rem 0 2.2rem;
+    padding: 0.8rem 0;
+
+    border-top: 1px solid var(--ds-border);
+    border-bottom: 1px solid var(--ds-border);
+
+    color: var(--ds-text-secondary);
+}
+
+.personal-ticker__track {
+    display: flex;
+
+    width: max-content;
+
+    animation: ticker-x 28s linear infinite;
+}
+
+.personal-ticker__group {
+    display: flex;
+
+    flex-shrink: 0;
+
+    align-items: center;
+
+    gap: 2.8rem;
+
+    padding-right: 2.8rem;
+}
+
+.personal-ticker__item {
+    white-space: nowrap;
+
+    font-size: 1.3rem;
+}
+
+.personal-ticker__item::before {
+    content: "✦";
+
+    margin-right: 0.8rem;
+
+    color: var(--ds-primary);
+
+    opacity: 0.6;
+}
+
+@keyframes ticker-x {
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+.personal-ticker:hover .personal-ticker__track {
+    animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .personal-ticker__track {
+        animation: none;
+    }
+}
+
+
+   
+/* ==========================================================
+   Sidebar Status Rotator
+   一則一則切換
+   ========================================================== */
+
+.sidebar-status-rotator {
+    margin-top: 2.4rem;
+    padding-top: 1.4rem;
+
+    border-top: 1px solid var(--ds-border);
+}
+
+
+.sidebar-status-rotator__title {
+    display: flex;
+    align-items: center;
+
+    gap: 0.6rem;
+
+    margin-bottom: 1rem;
+
+    font-size: 1.2rem;
+    font-weight: 650;
+
+    color: var(--ds-primary);
+}
+
+
+.sidebar-status-rotator__dot {
+    width: 6px;
+    height: 6px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: var(--ds-primary);
+}
+
+
+/*
+ * 固定顯示區域
+ */
+.sidebar-status-rotator__viewport {
+    position: relative;
+
+    height: 5.8rem;
+
+    overflow: hidden;
+}
+
+
+/*
+ * 所有近況先疊在同一位置
+ */
+.sidebar-status-rotator__item {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    padding-left: 0.9rem;
+
+    border-left:
+        2px solid var(--ds-border-green);
+
+    font-size: 1.2rem;
+
+    line-height: 1.7;
+
+    color: var(--ds-text-secondary);
+
+    opacity: 0;
+
+    transform: translateY(12px);
+
+    pointer-events: none;
+
+    transition:
+        opacity 420ms ease,
+        transform 420ms ease;
+}
+
+
+/*
+ * 當前顯示的近況
+ */
+.sidebar-status-rotator__item.is-active {
+    opacity: 1;
+
+    transform: translateY(0);
+
+    pointer-events: auto;
+}
+
+
+/*
+ * Footer
+ */
+.sidebar-status-rotator__footer {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 0.8rem;
+
+    margin-top: 1rem;
+}
+
+
+.sidebar-status-rotator__more {
+    font-size: 1.05rem;
+
+    color: var(--ds-primary);
+
+    opacity: 0.75;
+
+    transition:
+        opacity var(--ds-transition);
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+
+/*
+ * 小圓點進度
+ */
+.sidebar-status-rotator__indicator {
+    display: flex;
+
+    gap: 0.4rem;
+}
+
+
+.sidebar-status-rotator__indicator-dot {
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: var(--ds-border);
+
+    transition:
+        width 300ms ease,
+        background-color 300ms ease;
+}
+
+
+.sidebar-status-rotator__indicator-dot.is-active {
+    width: 14px;
+
+    border-radius: 999px;
+
+    background: var(--ds-primary);
+}
+
+
+/*
+ * Reduced motion
+ */
+@media (prefers-reduced-motion: reduce) {
+
+    .sidebar-status-rotator__item {
+        transition: none;
+    }
+}
+
+
+/* ==========================================================
+   Sidebar Status
+   ========================================================== */
+
+.sidebar-status {
+    margin-top: 2.4rem;
+
+    padding: 1.3rem 1.4rem;
+
+    border: 1px solid var(--ds-border);
+
+    border-radius: 12px;
+
+    background:
+        rgba(255, 253, 248, 0.72);
+
+    box-shadow:
+        0 3px 14px
+        rgba(50, 65, 55, 0.04);
+
+    transform:
+        rotate(-0.35deg);
+}
+
+.sidebar-status__header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.6rem;
+
+    margin-bottom: 0.8rem;
+
+    font-size: 1.2rem;
+    font-weight: 650;
+
+    color: var(--ds-primary);
+}
+
+.sidebar-status__dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background:
+        var(--ds-primary);
+}
+
+.sidebar-status__text {
+    margin: 0;
+
+    font-size: 1.25rem;
+
+    line-height: 1.8;
+
+    color:
+        var(--ds-text);
+}
+
+.sidebar-status__date {
+    margin-top: 0.8rem;
+
+    font-size: 1.05rem;
+
+    color:
+        var(--ds-text-secondary);
+
+    text-align: right;
+}
+
+/* ==========================================================
+   Now Page
+   ========================================================== */
+
+.now-page {
+    .now-page__header {
+        margin-bottom: 2rem;
+
+        h1 {
+            margin: 0;
+
+            color: var(--ds-text-strong);
+
+            font-size: 2.4rem;
+            font-weight: 650;
+
+            letter-spacing: -0.03em;
+        }
+    }
+}
+
+
+.now-page__content {
+    margin-bottom: 4rem;
+
+    padding: 2rem 2.2rem;
+
+    border: 1px solid var(--ds-border);
+    border-radius: var(--ds-radius-lg);
+
+    background: var(--ds-surface);
+
+    box-shadow: var(--ds-shadow);
+}
+
+
+/* 歷次近況 */
+
+.now-archive {
+    margin-top: 3.5rem;
+
+    h2 {
+        margin-bottom: 1.4rem;
+
+        color: var(--ds-text-strong);
+
+        font-size: 1.6rem;
+        font-weight: 650;
+    }
+}
+
+
+.now-archive__list {
+    display: flex;
+    flex-direction: column;
+
+    border-top: 1px solid var(--ds-border);
+}
+
+
+.now-archive__item {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 1.15rem 0.4rem;
+
+    border-bottom: 1px solid var(--ds-border);
+
+    color: var(--ds-text);
+
+    transition:
+        color var(--ds-transition),
+        padding-left var(--ds-transition);
+
+    &:hover {
+        padding-left: 0.8rem;
+
+        color: var(--ds-primary);
+    }
+}
+
+
+.now-archive__title {
+    font-size: 1.35rem;
+    font-weight: 550;
+}
+
+
+.now-archive__arrow {
+    color: var(--ds-primary);
+
+    opacity: 0.65;
+}

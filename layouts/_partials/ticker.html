@@ -1,0 +1,23 @@
+{{ with site.Data.now.ticker }}
+<div class="personal-ticker" aria-label="最近近況">
+    <div class="personal-ticker__track">
+
+        <div class="personal-ticker__group">
+            {{ range . }}
+                <span class="personal-ticker__item">
+                    {{ .text }}
+                </span>
+            {{ end }}
+        </div>
+
+        <div class="personal-ticker__group" aria-hidden="true">
+            {{ range . }}
+                <span class="personal-ticker__item">
+                    {{ .text }}
+                </span>
+            {{ end }}
+        </div>
+
+    </div>
+</div>
+{{ end }}

@@ -1,0 +1,23 @@
+{{ with site.Data.now }}
+
+<aside class="sidebar-status">
+
+    <div class="sidebar-status__header">
+        <span class="sidebar-status__dot"></span>
+
+        <span>
+            此刻
+        </span>
+    </div>
+
+    <p class="sidebar-status__text">
+        {{ .thought }}
+    </p>
+
+    <div class="sidebar-status__date">
+        {{ .updated }}
+    </div>
+
+</aside>
+
+{{ end }}
