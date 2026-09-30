@@ -3,8 +3,9 @@ title: "我這四年到底開了什麼東西？"
 slug: "fix-car1"
 date: 2026-09-27
 draft: false
+hideFromHome: false
 
-categories: [日常生活]
+categories: [life]
 tags: [修車]
 ---
 

@@ -9,10 +9,23 @@
     {{ partial "ticker.html" . }}
 
 
-    {{/* 各分類最新兩篇文章 */}}
-    {{ $categories := site.Taxonomies.categories.Alphabetical }}
+{{/* =========================
+     首頁分類文章
+     手動指定分類顯示順序
+========================= */}}
 
-    {{ range $categories }}
+{{ $categoryOrder := slice
+    "thoughts"
+    "life"
+    "hiking"
+}}
+
+{{ range $categoryOrder }}
+
+    {{/* 根據英文分類名稱取得 taxonomy */}}
+    {{ $category := index site.Taxonomies.categories . }}
+
+    {{ with $category }}
 
         {{ $categoryPage := .Page }}
 
@@ -22,8 +35,8 @@
         {{/* 排除不希望出現在首頁的文章 */}}
         {{ $posts = where $posts "Params.hideFromHome" "ne" true }}
 
-        {{/* 日期由新到舊，只取兩篇 */}}
-        {{ $posts = first 2 $posts.ByDate.Reverse }}
+        {{/* 日期由新到舊，只取前三篇 */}}
+        {{ $posts = first 3 $posts.ByDate.Reverse }}
 
         {{ if $posts }}
 
@@ -61,6 +74,8 @@
         {{ end }}
 
     {{ end }}
+
+{{ end }}
 
 
     {{- partial "footer/footer" . -}}

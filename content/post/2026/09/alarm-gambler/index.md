@@ -5,7 +5,7 @@ slug: 'alarm-gambler'
 description: ""
 draft: false
 
-categories: [日常生活]
+categories: [life]
 tags: [廢文]
 ---
 

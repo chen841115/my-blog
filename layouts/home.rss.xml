@@ -1,0 +1,62 @@
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<rss version="2.0"
+     xmlns:atom="http://www.w3.org/2005/Atom">
+
+    {{/* 所有 post 文章 */}}
+    {{- $posts := where site.RegularPages "Section" "post" -}}
+
+    {{/* 日期由新到舊 */}}
+    {{- $posts = $posts.ByDate.Reverse -}}
+
+    <channel>
+
+        <title>{{ site.Title | transform.XMLEscape }}</title>
+
+        <link>{{ site.Home.Permalink }}</link>
+
+        <description>
+            {{ printf "%s 的所有文章" site.Title | transform.XMLEscape }}
+        </description>
+
+        {{- with site.Language.LanguageCode }}
+        <language>{{ . }}</language>
+        {{- end }}
+
+        <generator>Hugo</generator>
+
+        {{- with .OutputFormats.Get "RSS" }}
+        <atom:link
+            href="{{ .Permalink }}"
+            rel="self"
+            type="application/rss+xml" />
+        {{- end }}
+
+        {{- with first 1 $posts }}
+            {{- range . }}
+        <lastBuildDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</lastBuildDate>
+            {{- end }}
+        {{- end }}
+
+        {{- range $posts }}
+
+        <item>
+
+            <title>{{ .Title | transform.XMLEscape }}</title>
+
+            <link>{{ .Permalink }}</link>
+
+            <guid isPermaLink="true">{{ .Permalink }}</guid>
+
+            <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate>
+
+            <description>
+                {{ .Summary | transform.XMLEscape | safeHTML }}
+            </description>
+
+        </item>
+
+        {{- end }}
+
+    </channel>
+
+</rss>

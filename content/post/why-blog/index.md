@@ -4,7 +4,7 @@ slug: "why-blog"
 date: 2026-09-21
 draft: false
 
-categories: [雜談]
+categories: [thoughts]
 tags: [部落格]
 ---
 

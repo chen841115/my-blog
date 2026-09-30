@@ -5,7 +5,7 @@ slug: 'first-peaks-3'
 description: ""
 draft: false
 
-categories: [日常生活]
+categories: [hiking]
 tags: [運動, 登山, 百岳]
 
 series: "first-peaks"

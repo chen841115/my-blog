@@ -5,7 +5,7 @@ slug: 'get-energy-how'
 description: ""
 draft: false
 
-categories: [雜談, 日常生活]
+categories: [thoughts, life]
 tags: [murmur]
 ---
 
