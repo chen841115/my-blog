@@ -2048,3 +2048,198 @@ html[data-scheme="dark"] {
 
     opacity: 0.65;
 }
+
+/* ==========================================================
+   Photo Gallery
+   ========================================================== */
+
+.photo-gallery__header {
+    margin-bottom: 3rem;
+
+    h1 {
+        margin-bottom: 0.7rem;
+
+        font-size: 2.5rem;
+        font-weight: 650;
+
+        color: var(--ds-text-strong);
+    }
+
+    time {
+        font-size: 1.2rem;
+
+        color: var(--ds-text-secondary);
+    }
+
+    p {
+        margin-top: 1.2rem;
+
+        max-width: 600px;
+
+        line-height: 1.8;
+
+        color: var(--ds-text-secondary);
+    }
+}
+
+
+.photo-gallery__intro {
+    margin-bottom: 3rem;
+}
+
+
+.photo-gallery__grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 1.5rem;
+}
+
+
+.photo-gallery__item {
+    margin: 0;
+
+    img {
+        display: block;
+
+        width: 100%;
+        height: auto;
+
+        border-radius: 12px;
+
+        transition:
+            transform 300ms ease,
+            box-shadow 300ms ease;
+
+        &:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 8px 24px rgba(40, 55, 45, 0.10);
+        }
+    }
+
+    figcaption {
+        margin-top: 0.65rem;
+
+        font-size: 1.15rem;
+        line-height: 1.6;
+
+        color: var(--ds-text-secondary);
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .photo-gallery__grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* ==========================================================
+   Article Photo
+   ========================================================== */
+
+.article-content .blog-photo {
+    margin-top: 2.8rem;
+    margin-bottom: 2.8rem;
+
+    text-align: center;
+}
+
+
+/* ==========================
+   Size
+   ========================== */
+
+.article-content .blog-photo--small {
+    width: 60%;
+    max-width: 600px;
+}
+
+.article-content .blog-photo--medium {
+    width: 86%;
+    max-width: 880px;
+}
+
+.article-content .blog-photo--large {
+    width: 96%;
+    max-width: 1100px;
+}
+
+.article-content .blog-photo--full {
+    width: 100%;
+    max-width: none;
+}
+
+
+/* ==========================
+   Alignment
+   ========================== */
+
+/* 置中 */
+.article-content .blog-photo--center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* 靠右 */
+.article-content .blog-photo--right {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+
+/* 靠左 */
+.article-content .blog-photo--left {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+
+/* 圖片本身 */
+.article-content .blog-photo img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    margin: 0;
+
+    border-radius: 12px;
+}
+
+
+/* 圖說 */
+.article-content .blog-photo figcaption {
+    margin-top: 0.8rem;
+
+    font-size: 1.15rem;
+    line-height: 1.6;
+
+    color: var(--ds-text-secondary);
+
+    text-align: center;
+}
+
+
+/* 手機統一滿寬置中 */
+@media (max-width: 768px) {
+
+    .article-content .blog-photo--small,
+    .article-content .blog-photo--medium,
+    .article-content .blog-photo--large,
+    .article-content .blog-photo--full {
+        width: 100%;
+        max-width: none;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+}

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 24 24"
+     fill="none"
+     stroke="currentColor"
+     stroke-width="1.8"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+  <!-- 相機主體 -->
+  <rect x="3.5" y="7" width="17" height="12.5" rx="3"/>
+
+  <!-- 上方凸起 -->
+  <path d="M8 7l1.2-2h5.6L16 7"/>
+
+  <!-- 鏡頭外圈 -->
+  <circle cx="12" cy="13.25" r="3.6"/>
+
+  <!-- 鏡頭內圈 -->
+  <circle cx="12" cy="13.25" r="1.4"/>
+
+  <!-- 右上小感應燈 -->
+  <circle cx="17.2" cy="10.3" r="0.7" fill="currentColor" stroke="none"/>
+
+</svg>

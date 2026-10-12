@@ -1,0 +1,74 @@
+{{ define "main" }}
+
+<article class="photo-gallery">
+
+    <header class="photo-gallery__header">
+
+        <h1>
+            {{ .Title }}
+        </h1>
+
+        <time>
+            {{ .Date.Format "2006.01.02" }}
+        </time>
+
+        {{ with .Description }}
+        <p>
+            {{ . }}
+        </p>
+        {{ end }}
+
+    </header>
+
+
+    {{ with .Content }}
+    <div class="photo-gallery__intro article-content">
+        {{ . }}
+    </div>
+    {{ end }}
+
+
+    <div class="photo-gallery__grid">
+
+        {{ range .Params.photos }}
+
+            {{ $image := resources.Get .src }}
+
+            {{ if $image }}
+
+                {{ $thumb := $image.Resize "900x webp q82" }}
+                {{ $large := $image.Resize "1800x webp q85" }}
+
+                <figure class="photo-gallery__item">
+
+                    <a href="{{ $large.RelPermalink }}">
+
+                        <img
+                            src="{{ $thumb.RelPermalink }}"
+                            width="{{ $thumb.Width }}"
+                            height="{{ $thumb.Height }}"
+                            alt="{{ .alt }}"
+                            loading="lazy"
+                        >
+
+                    </a>
+
+                    {{ with .caption }}
+
+                    <figcaption>
+                        {{ . }}
+                    </figcaption>
+
+                    {{ end }}
+
+                </figure>
+
+            {{ end }}
+
+        {{ end }}
+
+    </div>
+
+</article>
+
+{{ end }}

@@ -1,0 +1,49 @@
+{{- $src := .Get "src" -}}
+{{- $alt := .Get "alt" | default "" -}}
+{{- $caption := .Get "caption" -}}
+
+{{- $size := .Get "size" | default "medium" -}}
+{{- $align := .Get "align" | default "center" -}}
+
+{{- $image := resources.Get $src -}}
+
+{{- if $image -}}
+
+    {{- $small := $image.Resize "800x webp q80" -}}
+    {{- $medium := $image.Resize "1200x webp q82" -}}
+    {{- $large := $image.Resize "1800x webp q84" -}}
+
+    <figure class="
+        blog-photo
+        blog-photo--{{ $size }}
+        blog-photo--{{ $align }}
+    ">
+
+        <img
+            src="{{ $medium.RelPermalink }}"
+
+            srcset="
+                {{ $small.RelPermalink }} 800w,
+                {{ $medium.RelPermalink }} 1200w,
+                {{ $large.RelPermalink }} 1800w
+            "
+
+            sizes="
+                (max-width: 800px) 100vw,
+                1200px
+            "
+
+            width="{{ $medium.Width }}"
+            height="{{ $medium.Height }}"
+
+            alt="{{ $alt }}"
+            loading="lazy"
+        >
+
+        {{ with $caption }}
+            <figcaption>{{ . }}</figcaption>
+        {{ end }}
+
+    </figure>
+
+{{- end -}}
