@@ -29,3 +29,6 @@ about = [
     { type = "toc" },
     { type = "archives", params = { limit = 3 } }
 ]
+
+[imageProcessing.thumbnail]
+enabled = true

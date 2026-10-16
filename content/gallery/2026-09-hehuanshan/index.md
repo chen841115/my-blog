@@ -5,7 +5,7 @@ slug: "hehuanshan"
 
 description: "第一次到合歡山留下的一些照片。"
 
-cover: "photos/2026/09/hehuanshan-01.jpg"
+image: "photos/2026/09/hehuanshan-01.jpg"
 
 photos:
   - src: "photos/2026/09/hehuanshan-01.jpg"

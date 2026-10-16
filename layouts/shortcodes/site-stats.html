@@ -1,0 +1,35 @@
+{{/* 只統計文章區，如果你想統計全站可改成 site.RegularPages */}}
+{{ $posts := site.RegularPages }}
+
+{{ $totalPosts := len $posts }}
+{{ $totalWords := 0 }}
+
+{{ range $posts }}
+  {{ $totalWords = add $totalWords .WordCount }}
+{{ end }}
+
+{{ $avgWords := 0 }}
+{{ if gt $totalPosts 0 }}
+  {{ $avgWords = div $totalWords $totalPosts }}
+{{ end }}
+
+<div class="site-stats">
+  <div class="site-stats__title">📊 文章統計</div>
+
+  <div class="site-stats__grid">
+    <div class="site-stat-card">
+      <div class="site-stat-card__label">貼文總數</div>
+      <div class="site-stat-card__value">{{ $totalPosts }} 篇</div>
+    </div>
+
+    <div class="site-stat-card">
+      <div class="site-stat-card__label">總字數</div>
+      <div class="site-stat-card__value">{{ $totalWords }} 字</div>
+    </div>
+
+    <div class="site-stat-card">
+      <div class="site-stat-card__label">平均每篇</div>
+      <div class="site-stat-card__value">{{ $avgWords }} 字</div>
+    </div>
+  </div>
+</div>

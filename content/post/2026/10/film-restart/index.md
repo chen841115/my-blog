@@ -4,6 +4,7 @@ date: '2026-10-06'
 slug: 'film-restart'
 description: ""
 draft: false
+image: "photos/2026/10/000272310019.jpg"
 
 categories: [thoughts, life]
 tags: [攝影,底片]

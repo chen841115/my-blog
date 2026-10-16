@@ -9,6 +9,7 @@ categories: [hiking]
 tags: [運動, 登山, 百岳]
 
 series: "first-peaks"
+image: "photos/2026/09/shimenshan-02.jpg"
 
 prevPost: "/post/2026/09/first-peaks-1"
 nextPost: "/post/2026/09/first-peaks-3"

@@ -31,7 +31,7 @@ name = "心情隨筆"
 url = "/categories/thoughts/"
 weight = -60
 [menu.main.params]
-icon = "think"
+icon = "murmur"
 
 [[menu.social]]
 identifier = "rss"

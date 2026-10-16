@@ -1,0 +1,38 @@
+{{- $result := dict -}}
+
+{{- if .Image -}}
+
+    {{- $src := .Image -}}
+    {{- $path := strings.TrimPrefix "/" $src -}}
+
+    {{- $resource := resources.Get $path -}}
+
+    {{/* assets 找不到，再找 Page Bundle */}}
+    {{- if not $resource -}}
+        {{- with .Resources -}}
+            {{- $resource = .GetMatch $path -}}
+        {{- end -}}
+    {{- end -}}
+
+    {{- if $resource -}}
+
+        {{- if and
+            .Context.Site.Params.imageProcessing.autoOrient
+            (reflect.IsImageResourceProcessable $resource)
+        -}}
+            {{- $filter := images.AutoOrient -}}
+            {{- $resource = $resource | images.Filter $filter -}}
+        {{- end -}}
+
+        {{- $result = dict
+            "Resource" $resource
+            "Permalink" $resource.RelPermalink
+            "Height" $resource.Height
+            "Width" $resource.Width
+        -}}
+
+    {{- end -}}
+
+{{- end -}}
+
+{{- return $result -}}
