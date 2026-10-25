@@ -1,0 +1,56 @@
+
+{{- $server := .Site.Params.artalk.server -}}
+{{- $site := .Site.Params.artalk.site -}}
+
+<!-- Artalk CSS -->
+<link rel="stylesheet" href="{{ $server }}/dist/Artalk.css">
+
+<!-- Artalk JavaScript -->
+<script src="{{ $server }}/dist/Artalk.js"></script>
+
+<!-- 留言區 -->
+<section class="guestbook-artalk">
+
+    <div class="guestbook-artalk__heading">
+        <div class="guestbook-artalk__title">
+            留下一句話
+        </div>
+
+        <div class="guestbook-artalk__description">
+            電子郵件不會公開，歡迎在這裡留下想法或打聲招呼。
+        </div>
+    </div>
+
+    <div id="Comments"></div>
+
+</section>
+
+<script>
+(function () {
+
+    const artalk = Artalk.init({
+        el: '#Comments',
+
+        pageKey: {{ .RelPermalink | jsonify | safeJS }},
+        pageTitle: {{ .Title | jsonify | safeJS }},
+
+        server: {{ $server | jsonify | safeJS }},
+        site: {{ $site | jsonify | safeJS }},
+
+        locale: 'zh-TW',
+
+        placeholder: '想說些什麼呢？在這裡留下你的話……',
+        sendBtn: '留下留言',
+
+        darkMode: document.documentElement.dataset.scheme === 'dark'
+    });
+
+    // 跟隨 Stack 深色模式切換
+    window.addEventListener('onColorSchemeChange', function () {
+        artalk.setDarkMode(
+            document.documentElement.dataset.scheme === 'dark'
+        );
+    });
+
+})();
+</script>

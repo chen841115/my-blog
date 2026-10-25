@@ -8,8 +8,11 @@ math = false
 toc = true
 readingTime = true
 
+
 [comments]
-enabled = false
+    enabled = true
+    provider = "artalk"
+
 
 [widgets]
 homepage = [

@@ -3,7 +3,7 @@ title: '視為理所當然的事'
 date: '2026-10-23'
 slug: 'things-granted'
 description: ""
-draft: true
+draft: false
 
 categories: [thoughts]
 tags: [murmur]

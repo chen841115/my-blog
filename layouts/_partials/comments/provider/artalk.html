@@ -1,0 +1,8 @@
+
+{{- /* 只在一般文章區啟用留言 */ -}}
+
+{{- if in (slice "post" "posts") .Section -}}
+
+    {{- partial "artalk/widget.html" . -}}
+
+{{- end -}}
