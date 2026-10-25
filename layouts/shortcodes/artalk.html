@@ -1,0 +1,42 @@
+{{- $server := .Site.Params.artalk.server -}}
+{{- $site := .Site.Params.artalk.site -}}
+
+<link
+    href="{{ $server }}/dist/Artalk.css"
+    rel="stylesheet"
+/>
+
+<script src="{{ $server }}/dist/Artalk.js"></script>
+
+<div class="guestbook-artalk">
+    <div class="guestbook-artalk__heading">
+        <div class="guestbook-artalk__title">
+            留下一句話
+        </div>
+
+        <div class="guestbook-artalk__description">
+            電子郵件不會公開，歡迎在這裡留下想法或打聲招呼。
+        </div>
+    </div>
+
+    <div id="Comments"></div>
+</div>
+
+<script>
+Artalk.init({
+    el: '#Comments',
+
+    pageKey: {{ .Page.RelPermalink | jsonify | safeJS }},
+    pageTitle: {{ .Page.Title | jsonify | safeJS }},
+
+    server: {{ $server | jsonify | safeJS }},
+    site: {{ $site | jsonify | safeJS }},
+
+    locale: 'zh-TW',
+
+    placeholder: '想說些什麼呢？在這裡留下你的話……',
+    sendBtn: '留下留言',
+
+    darkMode: 'inherit'
+});
+</script>

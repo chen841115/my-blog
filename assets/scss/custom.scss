@@ -2616,3 +2616,586 @@ html[data-scheme="dark"] {
 .site-footer-stats__dot {
     opacity: 0.45;
 }
+
+/* =========================================================
+   Artalk Guestbook
+   溫暖墨綠卡片版
+   ========================================================= */
+
+.guestbook-artalk {
+    /* ---------- Guestbook Design Tokens ---------- */
+
+    --guestbook-primary: #3f6254;
+    --guestbook-primary-hover: #334f45;
+
+    --guestbook-bg: #f5f8f5;
+    --guestbook-input-bg: #ffffff;
+
+    --guestbook-border: #dce5df;
+
+    --guestbook-text: #303732;
+    --guestbook-muted: #7b847e;
+
+    --guestbook-shadow:
+        0 8px 28px rgba(47, 72, 61, 0.06);
+
+    margin-top: 2rem;
+
+    color: var(--guestbook-text);
+
+
+    /* =====================================================
+       上方小標題
+       ===================================================== */
+
+    &__heading {
+        margin-bottom: 1rem;
+    }
+
+    &__title {
+        margin-bottom: 0.35rem;
+
+        color: var(--guestbook-text);
+
+        font-size: 1.15rem;
+        font-weight: 650;
+        line-height: 1.5;
+    }
+
+    &__description {
+        color: var(--guestbook-muted);
+
+        font-size: 0.9rem;
+        line-height: 1.7;
+    }
+
+
+    /* =====================================================
+       Artalk 本體
+       ===================================================== */
+
+    .artalk {
+        color: var(--guestbook-text);
+        font-family: inherit;
+    }
+
+
+    /* =====================================================
+       留言輸入卡片
+       ===================================================== */
+
+    .atk-main-editor {
+        overflow: hidden;
+
+        padding: 18px !important;
+
+        background:
+            var(--guestbook-bg) !important;
+
+        border:
+            1px solid var(--guestbook-border) !important;
+
+        border-radius:
+            16px !important;
+
+        box-shadow:
+            var(--guestbook-shadow) !important;
+
+        transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+
+    /* =====================================================
+       暱稱 / Email / 網址
+       ===================================================== */
+
+    .atk-main-editor > .atk-header {
+        gap: 10px;
+    }
+
+    .atk-main-editor > .atk-header input {
+        min-height: 44px;
+
+        padding:
+            9px 12px !important;
+
+        background:
+            var(--guestbook-input-bg) !important;
+
+        color:
+            var(--guestbook-text) !important;
+
+        border:
+            1px solid var(--guestbook-border) !important;
+
+        border-radius:
+            10px !important;
+
+        outline: none !important;
+
+        transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease,
+            background-color 0.2s ease;
+    }
+
+    .atk-main-editor > .atk-header input::placeholder {
+        color:
+            var(--guestbook-muted) !important;
+
+        opacity: 0.8;
+    }
+
+    .atk-main-editor > .atk-header input:focus {
+        border-color:
+            var(--guestbook-primary) !important;
+
+        box-shadow:
+            0 0 0 3px rgba(63, 98, 84, 0.10) !important;
+    }
+
+
+    /* =====================================================
+       留言文字區
+       ===================================================== */
+
+    .atk-main-editor > .atk-textarea-wrap {
+        overflow: hidden;
+
+        margin-top: 10px;
+
+        background:
+            var(--guestbook-input-bg) !important;
+
+        border:
+            1px solid var(--guestbook-border) !important;
+
+        border-radius:
+            12px !important;
+
+        transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+    .atk-main-editor > .atk-textarea-wrap:focus-within {
+        border-color:
+            var(--guestbook-primary) !important;
+
+        box-shadow:
+            0 0 0 3px rgba(63, 98, 84, 0.10) !important;
+    }
+
+    .atk-main-editor
+    > .atk-textarea-wrap
+    > .atk-textarea {
+        min-height: 150px !important;
+
+        padding:
+            14px !important;
+
+        background:
+            transparent !important;
+
+        color:
+            var(--guestbook-text) !important;
+
+        font-size:
+            1rem !important;
+
+        line-height:
+            1.75 !important;
+    }
+
+    .atk-textarea::placeholder {
+        color:
+            var(--guestbook-muted) !important;
+
+        opacity: 0.75;
+    }
+
+
+    /* =====================================================
+       下方工具列
+       ===================================================== */
+
+    .atk-main-editor > .atk-bottom {
+        padding-top: 12px;
+
+        border-top:
+            none !important;
+    }
+
+    .atk-main-editor > .atk-bottom svg {
+        color:
+            var(--guestbook-muted);
+    }
+
+
+    /* =====================================================
+       送出按鈕
+       ===================================================== */
+
+    .atk-main-editor
+    > .atk-bottom
+    .atk-send-btn {
+        min-width: 120px;
+        height: 42px;
+
+        padding:
+            0 20px !important;
+
+        background:
+            var(--guestbook-primary) !important;
+
+        color:
+            #ffffff !important;
+
+        border:
+            none !important;
+
+        border-radius:
+            10px !important;
+
+        box-shadow:
+            0 4px 12px rgba(63, 98, 84, 0.15);
+
+        font-size:
+            0.95rem !important;
+
+        font-weight:
+            600 !important;
+
+        transition:
+            background-color 0.2s ease,
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+    .atk-main-editor
+    > .atk-bottom
+    .atk-send-btn:hover {
+        background:
+            var(--guestbook-primary-hover) !important;
+
+        transform:
+            translateY(-1px);
+
+        box-shadow:
+            0 6px 16px rgba(63, 98, 84, 0.20);
+    }
+
+    .atk-main-editor
+    > .atk-bottom
+    .atk-send-btn:active {
+        transform:
+            translateY(0);
+    }
+
+
+    /* =====================================================
+       留言數 / 排序區
+       ===================================================== */
+
+    .atk-list-header {
+        margin-top: 2rem;
+
+        color:
+            var(--guestbook-muted);
+    }
+
+
+    /* =====================================================
+       每一則留言做成卡片
+       ===================================================== */
+
+    .atk-list-comments-wrap
+    > .atk-comment-wrap
+    > .atk-comment {
+        margin-bottom: 12px;
+
+        padding: 16px;
+
+        background:
+            var(--guestbook-input-bg);
+
+        border:
+            1px solid var(--guestbook-border);
+
+        border-radius:
+            14px;
+
+        box-shadow:
+            0 4px 18px rgba(47, 72, 61, 0.04);
+
+        transition:
+            border-color 0.2s ease,
+            box-shadow 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    .atk-list-comments-wrap
+    > .atk-comment-wrap
+    > .atk-comment:hover {
+        border-color:
+            rgba(63, 98, 84, 0.35);
+
+        box-shadow:
+            0 7px 22px rgba(47, 72, 61, 0.07);
+    }
+
+
+    /* =====================================================
+       留言者名稱
+       ===================================================== */
+
+    .atk-comment
+    > .atk-main
+    > .atk-header
+    .atk-item.atk-nick,
+
+    .atk-comment
+    > .atk-main
+    > .atk-header
+    .atk-item.atk-nick a {
+        color:
+            var(--guestbook-primary) !important;
+
+        font-weight:
+            650 !important;
+    }
+
+
+    /* =====================================================
+       留言內容
+       ===================================================== */
+
+    .atk-content {
+        color:
+            var(--guestbook-text) !important;
+
+        line-height:
+            1.75;
+    }
+
+
+    /* =====================================================
+       Reply / Like 等次要操作
+       ===================================================== */
+
+    .atk-comment .atk-actions {
+        color:
+            var(--guestbook-muted);
+    }
+
+    .atk-comment .atk-actions a:hover {
+        color:
+            var(--guestbook-primary) !important;
+    }
+
+
+    /* =====================================================
+       頭像
+       ===================================================== */
+
+    .atk-avatar img {
+        border-radius:
+            50% !important;
+    }
+}
+
+
+/* =========================================================
+   Stack 深色模式
+   ========================================================= */
+
+html[data-scheme="dark"] .guestbook-artalk {
+    --guestbook-primary: #789b8a;
+    --guestbook-primary-hover: #8aab9a;
+
+    --guestbook-bg: #27322d;
+    --guestbook-input-bg: #202925;
+
+    --guestbook-border: #3a4841;
+
+    --guestbook-text: #e8ede9;
+    --guestbook-muted: #a7b0aa;
+
+    --guestbook-shadow:
+        0 8px 28px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================================
+   手機版
+   ========================================================= */
+
+@media (max-width: 768px) {
+    .guestbook-artalk {
+        margin-top: 1.5rem;
+
+        .atk-main-editor {
+            padding:
+                14px !important;
+
+            border-radius:
+                14px !important;
+        }
+
+        .atk-main-editor
+        > .atk-textarea-wrap
+        > .atk-textarea {
+            min-height:
+                130px !important;
+        }
+
+        .atk-main-editor
+        > .atk-bottom
+        .atk-send-btn {
+            min-width:
+                105px;
+        }
+
+        .atk-list-comments-wrap
+        > .atk-comment-wrap
+        > .atk-comment {
+            padding:
+                14px;
+
+            border-radius:
+                12px;
+        }
+    }
+}
+
+/* =========================================================
+   Artalk Guestbook - Typography Fix
+   對應 Stack html font-size: 62.5%
+   ========================================================= */
+
+.guestbook-artalk {
+    margin-top: 1.6rem;
+
+    /* Artalk 整體字體基準：15px */
+    .artalk {
+        font-size: 1.5rem !important;
+        font-family: inherit !important;
+    }
+
+    /* 標題與說明 */
+    &__heading {
+        margin-bottom: 1.2rem;
+    }
+
+    &__title {
+        font-size: 1.8rem !important;
+        font-weight: 650;
+        line-height: 1.5;
+    }
+
+    &__description {
+        margin-top: 0.3rem;
+        font-size: 1.3rem !important;
+        line-height: 1.7;
+    }
+
+    /* 整張卡片 */
+    .atk-main-editor {
+        padding: 16px !important;
+        border-radius: 14px !important;
+    }
+
+    /* 暱稱 / Email / 個人網站 */
+    .atk-main-editor > .atk-header {
+        gap: 10px;
+    }
+
+    .atk-main-editor > .atk-header input {
+        min-height: 42px !important;
+        padding: 9px 12px !important;
+        font-size: 1.4rem !important;
+        line-height: 1.5 !important;
+        font-family: inherit !important;
+    }
+
+    .atk-main-editor > .atk-header input::placeholder {
+        font-size: 1.4rem !important;
+    }
+
+    /* 留言輸入框 */
+    .atk-main-editor > .atk-textarea-wrap {
+        margin-top: 10px;
+    }
+
+    .atk-main-editor
+    > .atk-textarea-wrap
+    > .atk-textarea {
+        min-height: 120px !important;
+        padding: 13px !important;
+        font-size: 1.5rem !important;
+        line-height: 1.7 !important;
+        font-family: inherit !important;
+    }
+
+    .atk-textarea::placeholder {
+        font-size: 1.5rem !important;
+    }
+
+    /* 下方工具列 */
+    .atk-main-editor > .atk-bottom {
+        padding-top: 10px;
+        font-size: 1.4rem !important;
+    }
+
+    .atk-main-editor > .atk-bottom svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* 留下留言按鈕 */
+    .atk-main-editor
+    > .atk-bottom
+    .atk-send-btn {
+        min-width: 108px !important;
+        height: 40px !important;
+        padding: 0 18px !important;
+
+        font-size: 1.4rem !important;
+        font-weight: 600 !important;
+
+        border-radius: 10px !important;
+    }
+
+    /* 留言數與排序 */
+    .atk-list-header {
+        margin-top: 2rem;
+        font-size: 1.5rem !important;
+    }
+
+    /* 留言卡片 */
+    .atk-comment {
+        font-size: 1.5rem;
+    }
+
+    .atk-content {
+        font-size: 1.5rem !important;
+        line-height: 1.75 !important;
+    }
+}
+
+/* 手機版 */
+@media (max-width: 768px) {
+    .guestbook-artalk {
+        .atk-main-editor {
+            padding: 12px !important;
+        }
+
+        .atk-main-editor
+        > .atk-textarea-wrap
+        > .atk-textarea {
+            min-height: 110px !important;
+        }
+    }
+}
