@@ -3199,3 +3199,105 @@ html[data-scheme="dark"] .guestbook-artalk {
         }
     }
 }
+
+
+/* =========================================
+   Cheng-Chih Blog
+   Dark Mode Fix
+   Hugo Stack v4
+========================================= */
+
+:root[data-scheme="dark"] {
+
+  /* 深色模式專用色彩 */
+  --cc-dark-surface: #26332c;
+  --cc-dark-border: #405348;
+  --cc-dark-text: #e9eee9;
+  --cc-dark-muted: #b1c1b6;
+  --cc-dark-accent: #a3cab2;
+
+  /* -------------------------------------
+     1. 首頁歡迎卡片
+  ------------------------------------- */
+
+  .home-intro {
+    background: var(--cc-dark-surface) !important;
+    color: var(--cc-dark-text) !important;
+    border-color: var(--cc-dark-border) !important;
+  }
+
+  .home-intro :is(
+    h1, h2, h3, h4, h5, h6,
+    p, li, strong
+  ) {
+    color: var(--cc-dark-text) !important;
+  }
+
+  .home-intro a {
+    color: var(--cc-dark-accent) !important;
+  }
+
+  /* -------------------------------------
+     2. 關於我卡片
+  ------------------------------------- */
+
+  .about-card {
+    background: var(--cc-dark-surface) !important;
+    color: var(--cc-dark-text) !important;
+    border-color: var(--cc-dark-border) !important;
+  }
+
+  .about-card :is(
+    h1, h2, h3, h4, h5, h6,
+    p, li, strong, small
+  ) {
+    color: var(--cc-dark-text) !important;
+  }
+
+  .about-card a {
+    color: var(--cc-dark-accent) !important;
+  }
+
+  /* -------------------------------------
+     3. 近況與文章內容文字
+     修正深底黑字
+  ------------------------------------- */
+
+  .article-content {
+    color: var(--cc-dark-text) !important;
+  }
+
+  .article-content :is(
+    h1, h2, h3, h4, h5, h6,
+    p, li, strong, em
+  ) {
+    color: var(--cc-dark-text) !important;
+  }
+
+  /* -------------------------------------
+     4. 左側「此刻」便條
+  ------------------------------------- */
+
+  .sidebar-status {
+    background: var(--cc-dark-surface) !important;
+    color: var(--cc-dark-text) !important;
+    border-color: var(--cc-dark-border) !important;
+  }
+
+  .sidebar-status__header {
+    color: var(--cc-dark-accent) !important;
+  }
+
+  .sidebar-status__text {
+    color: var(--cc-dark-text) !important;
+  }
+
+  .sidebar-status__date {
+    color: var(--cc-dark-muted) !important;
+  }
+
+  .sidebar-status__dot {
+    background-color: var(--cc-dark-accent) !important;
+  }
+
+}
