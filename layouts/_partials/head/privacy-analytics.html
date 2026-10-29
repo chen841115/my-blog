@@ -1,0 +1,26 @@
+{{/* 對隱私設定頁要求搜尋引擎不要收錄；這不是存取控制。 */}}
+{{- if .Params.privacySettingsPage }}
+<meta name="robots" content="noindex,nofollow,noarchive">
+{{- end }}
+
+{{/* 只在正式網站、非設定頁載入 GA4；務必移除其他重複的 GA 安裝方式。 */}}
+{{- if and hugo.IsProduction (not .Params.privacySettingsPage) }}
+<script>
+(function () {
+  let optedOut = false;
+  try { optedOut = localStorage.getItem('blog_owner_no_track') === '1'; }
+  catch (error) { /* 瀏覽器不允許 localStorage 時使用預設值：允許統計 */ }
+  if (optedOut) return;
+
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = 'https://www.googletagmanager.com/gtag/js?id=G-RPSQ4JTV18';
+  document.head.appendChild(script);
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { window.dataLayer.push(arguments); };
+  window.gtag('js', new Date());
+  window.gtag('config', 'G-RPSQ4JTV18');
+})();
+</script>
+{{- end }}

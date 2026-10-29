@@ -16,3 +16,5 @@ menu:
 希望能把這裡當作儲思盆，但不排除會有一些廢文。
 
 如果想更認識我，可以先看看->[關於我]({{< relref "/about" >}})。
+
+我有參與11月的[BlogBlog 同樂會](https://blog.giveanornot.com/blogblogparty-blog-posts/)，我投稿了部落格第一篇文章 -> [為什麼開始寫部落格]({{< relref "post/why-blog" >}})。

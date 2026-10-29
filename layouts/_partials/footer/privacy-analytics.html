@@ -1,0 +1,21 @@
+{{/* Cloudflare Web Analytics 必須先改成「Enable with JS Snippet installation」。 */}}
+{{- if and hugo.IsProduction (not .Params.privacySettingsPage) }}
+<script>
+(function () {
+  let optedOut = false;
+  try { optedOut = localStorage.getItem('blog_owner_no_track') === '1'; }
+  catch (error) { /* 瀏覽器不允許 localStorage 時使用預設值：允許統計 */ }
+  if (optedOut) return;
+
+  // 請把下方字串換成 Cloudflare Web Analytics -> Manage site 的 Site Token
+  const token = 'REPLACE_WITH_CLOUDFLARE_SITE_TOKEN';
+  if (token === 'REPLACE_WITH_CLOUDFLARE_SITE_TOKEN') return;
+
+  const script = document.createElement('script');
+  script.type = 'module';
+  script.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+  script.setAttribute('data-cf-beacon', JSON.stringify({ token: token }));
+  document.body.appendChild(script);
+})();
+</script>
+{{- end }}

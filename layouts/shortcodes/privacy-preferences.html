@@ -1,0 +1,124 @@
+<section class="privacy-preferences" id="privacy-preferences" aria-labelledby="privacy-preferences-title">
+  <div class="privacy-preferences__top">
+    <span class="privacy-preferences__icon" aria-hidden="true">✦</span>
+    <div>
+      <h2 id="privacy-preferences-title">我的瀏覽，我來決定</h2>
+      <p>Privacy &amp; Analytics Preferences</p>
+    </div>
+  </div>
+
+  <p>這裡可以決定是否讓本站透過 Google Analytics 4 與 Cloudflare Web Analytics 統計你的頁面瀏覽。你的選擇只儲存在目前瀏覽器，不必登入。</p>
+
+  <div class="privacy-preferences__status" role="status" aria-live="polite">
+    <span class="privacy-preferences__status-label">目前設定</span>
+    <strong data-privacy-status>讀取中…</strong>
+    <span data-privacy-description>正在讀取這個瀏覽器儲存的偏好。</span>
+  </div>
+
+  <div class="privacy-preferences__actions" role="group" aria-label="流量追蹤偏好">
+    <button type="button" data-privacy-opt-out aria-pressed="false">不要追蹤我</button>
+    <button type="button" data-privacy-opt-in aria-pressed="false">允許流量統計</button>
+  </div>
+
+  <p class="privacy-preferences__note" data-privacy-feedback aria-live="polite">設定後，之後開啟的文章與新分頁都會沿用相同選擇。</p>
+  <p class="privacy-preferences__footnote">這個設定只影響瀏覽器端的 GA4 與 Cloudflare Web Analytics；Cloudflare 的 HTTP 請求／安全紀錄不會因此消失。過去已送出的數據也無法藉由切換此設定撤回。</p>
+</section>
+
+<style>
+  .privacy-preferences {
+    border: 1px solid rgba(65, 107, 82, .26);
+    border-radius: 20px;
+    background: var(--card-background, transparent);
+    box-shadow: 0 5px 24px rgba(29, 69, 45, .055);
+    padding: clamp(20px, 4vw, 32px);
+    color: inherit;
+  }
+  .privacy-preferences__top { display: flex; gap: 14px; align-items: center; margin-bottom: 16px; }
+  .privacy-preferences__icon {
+    display: grid; place-items: center; width: 44px; height: 44px;
+    flex: none; border-radius: 14px; color: white; background: #356b50; font-size: 25px;
+  }
+  .privacy-preferences h2 { margin: 0 0 4px; font-size: 1.25rem; color: inherit; }
+  .privacy-preferences__top p { margin: 0; font-size: .85rem; opacity: .68; }
+  .privacy-preferences > p { margin: 13px 0; line-height: 1.8; }
+  .privacy-preferences__status {
+    display: grid; gap: 7px; margin: 20px 0;
+    background: color-mix(in srgb, var(--card-background, #fff) 85%, #6c9875 15%);
+    border: 1px solid rgba(73, 116, 89, .19); border-radius: 14px;
+    padding: 16px 18px;
+  }
+  .privacy-preferences__status-label { font-size: .84rem; opacity: .7; }
+  .privacy-preferences__status strong { font-size: 1.12rem; }
+  .privacy-preferences__status [data-privacy-description] { font-size: .9rem; opacity: .79; }
+  .privacy-preferences__actions { display: flex; flex-wrap: wrap; gap: 10px; }
+  .privacy-preferences__actions button {
+    flex: 1 1 180px; min-height: 46px; border-radius: 12px;
+    padding: 10px 16px; cursor: pointer; font: inherit;
+    border: 1px solid #668a74; color: inherit; background: transparent;
+    transition: background-color .15s ease, color .15s ease;
+  }
+  .privacy-preferences__actions button[aria-pressed="true"] {
+    background: #356b50; border-color: #356b50; color: #fff;
+  }
+  .privacy-preferences__actions button:focus-visible { outline: 3px solid #8abd9a; outline-offset: 2px; }
+  .privacy-preferences .privacy-preferences__note { font-size: .9rem; margin-top: 15px; }
+  .privacy-preferences .privacy-preferences__footnote {
+    margin-bottom: 0; border-top: 1px solid rgba(73,116,89,.19); padding-top: 14px;
+    font-size: .78rem; opacity: .7; line-height: 1.7;
+  }
+  @media (max-width: 440px) {
+    .privacy-preferences__actions { flex-direction: column; }
+    .privacy-preferences__actions button { flex-basis: auto; width: 100%; }
+  }
+</style>
+
+<script>
+(function () {
+  'use strict';
+  const root = document.getElementById('privacy-preferences');
+  if (!root) return;
+  const storageKey = 'blog_owner_no_track';
+  const status = root.querySelector('[data-privacy-status]');
+  const description = root.querySelector('[data-privacy-description]');
+  const feedback = root.querySelector('[data-privacy-feedback]');
+  const optOutButton = root.querySelector('[data-privacy-opt-out]');
+  const optInButton = root.querySelector('[data-privacy-opt-in]');
+  let storageAvailable = true;
+
+  function readChoice() {
+    try { return window.localStorage.getItem(storageKey); }
+    catch (error) { storageAvailable = false; return null; }
+  }
+
+  function render() {
+    const choice = readChoice();
+    const excluded = choice === '1';
+    status.textContent = excluded ? '已關閉流量追蹤' : (choice === '0' ? '已允許流量統計' : '尚未設定（預設允許統計）');
+    description.textContent = excluded
+      ? '此瀏覽器開啟其他文章時，不會載入本站的兩套瀏覽器端分析程式。'
+      : '目前可載入 Google Analytics 4 與 Cloudflare Web Analytics。';
+    optOutButton.setAttribute('aria-pressed', String(excluded));
+    optInButton.setAttribute('aria-pressed', String(choice === '0'));
+    if (!storageAvailable) {
+      feedback.textContent = '此瀏覽器無法存取網站儲存空間，因此無法保留偏好。請檢查隱私設定。';
+    }
+  }
+
+  function save(value) {
+    try {
+      window.localStorage.setItem(storageKey, value);
+      storageAvailable = true;
+      render();
+      feedback.textContent = value === '1'
+        ? '已儲存「不追蹤」。從下一次開啟網站頁面起生效；新分頁也會沿用。'
+        : '已儲存「允許統計」。從下一次開啟網站頁面起生效。';
+    } catch (error) {
+      storageAvailable = false;
+      feedback.textContent = '儲存失敗：瀏覽器禁止存取 localStorage。';
+    }
+  }
+  optOutButton.addEventListener('click', function () { save('1'); });
+  optInButton.addEventListener('click', function () { save('0'); });
+  render();
+})();
+</script>
