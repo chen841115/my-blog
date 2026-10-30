@@ -9,41 +9,46 @@
 
 {{- if $image -}}
 
+    {{- /* Keep the existing responsive WebP preview sizes. */ -}}
     {{- $small := $image.Resize "800x webp q80" -}}
     {{- $medium := $image.Resize "1200x webp q82" -}}
     {{- $large := $image.Resize "1800x webp q84" -}}
 
-    <figure class="
-        blog-photo
-        blog-photo--{{ $size }}
-        blog-photo--{{ $align }}
-    ">
+    {{- /* Full-pixel-dimension WebP: this is NOT the original JPG. */ -}}
+    {{- $full := $image.Process "webp q85" -}}
 
-        <img
-            src="{{ $medium.RelPermalink }}"
-
-            srcset="
-                {{ $small.RelPermalink }} 800w,
-                {{ $medium.RelPermalink }} 1200w,
-                {{ $large.RelPermalink }} 1800w
-            "
-
-            sizes="
-                (max-width: 800px) 100vw,
-                1200px
-            "
-
-            width="{{ $medium.Width }}"
-            height="{{ $medium.Height }}"
-
-            alt="{{ $alt }}"
-            loading="lazy"
+    <figure class="blog-photo blog-photo--{{ $size }} blog-photo--{{ $align }}">
+        {{- /* Stack v4 PhotoSwipe detects figure a.image-link directly. */ -}}
+        <a
+            class="image-link blog-photo__link"
+            href="{{ $full.RelPermalink }}"
+            data-pswp-width="{{ $full.Width }}"
+            data-pswp-height="{{ $full.Height }}"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="{{ if $alt }}放大圖片：{{ $alt }}{{ else }}放大圖片{{ end }}"
         >
+            <img
+                src="{{ $medium.RelPermalink }}"
+                srcset="
+                    {{ $small.RelPermalink }} {{ $small.Width }}w,
+                    {{ $medium.RelPermalink }} {{ $medium.Width }}w,
+                    {{ $large.RelPermalink }} {{ $large.Width }}w
+                "
+                sizes="
+                    (max-width: 800px) 100vw,
+                    1200px
+                "
+                width="{{ $medium.Width }}"
+                height="{{ $medium.Height }}"
+                alt="{{ $alt }}"
+                loading="lazy"
+                decoding="async"
+            >
+        </a>
 
         {{ with $caption }}
             <figcaption>{{ . }}</figcaption>
         {{ end }}
-
     </figure>
-
 {{- end -}}

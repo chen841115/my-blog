@@ -1618,6 +1618,411 @@ YT
     }
 }
 
+/* About Me page -- append this file's contents to assets/scss/custom.scss.
+   Do not add a second @import of custom.scss. */
+
+.about-page-layout .main-article .article-content.about-content {
+    margin: 0;
+    padding: 0;
+}
+
+.about-landing {
+    --about-accent: #42654f;
+    --about-soft: #f1f5f0;
+    --about-line: #dbe5da;
+    --about-muted: var(--card-text-color-secondary);
+
+    padding: clamp(24px, 4.5vw, 54px);
+    color: var(--card-text-color-main);
+    font-family: var(--article-font-family);
+    line-height: 1.75;
+}
+
+:root[data-scheme="dark"] .about-landing {
+    --about-accent: #a8c9ae;
+    --about-soft: #344139;
+    --about-line: #56655a;
+}
+
+/* Undo Stack's default left borders and padding for article headings. */
+.about-page-layout .about-landing h1,
+.about-page-layout .about-landing h2,
+.about-page-layout .about-landing h3 {
+    margin: 0;
+    margin-inline-start: 0;
+    padding: 0;
+    padding-inline-start: 0;
+    border: none;
+    font-family: var(--article-font-family);
+    line-height: 1.4;
+    color: var(--card-text-color-main);
+}
+
+.about-page-layout .about-landing p {
+    margin: 0;
+}
+
+.about-eyebrow-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.about-eyebrow {
+    font-size: 1.45rem;
+    letter-spacing: .025em;
+    color: var(--about-muted);
+}
+
+.about-leaf {
+    width: 24px;
+    height: 24px;
+    color: var(--about-accent);
+    flex: 0 0 auto;
+}
+
+.about-page-layout .about-landing .about-cover h1 {
+    font-size: clamp(2.5rem, 3vw, 3.3rem);
+    font-weight: 650;
+    letter-spacing: .02em;
+}
+
+.about-page-layout .about-cover .about-subtitle {
+    margin-top: 12px;
+    font-size: clamp(1.5rem, 1.8vw, 1.85rem);
+    color: var(--about-muted);
+}
+
+.about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+}
+
+.about-tags span {
+    display: inline-block;
+    border-radius: 100px;
+    background: var(--about-soft);
+    color: var(--card-text-color-secondary);
+    padding: 3px 13px;
+    font-size: 1.35rem;
+}
+
+.about-intro-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(24px, 4vw, 45px);
+    margin-top: clamp(30px, 4vw, 42px);
+}
+
+.about-photo,
+.about-photo img,
+.about-photo-fallback {
+    width: 100%;
+    min-width: 0;
+    aspect-ratio: 4 / 3;
+    border-radius: 22px;
+    overflow: hidden;
+}
+
+.about-photo img {
+    display: block;
+    object-fit: cover;
+    height: 100% !important;
+    max-height: none;
+}
+
+.about-photo-fallback {
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    text-align: center;
+    color: #556b51;
+    font-size: 1.4rem;
+    background: linear-gradient(165deg, #abbf91 0%, #e8c987 45%, #6a8b72 46%, #455f4e 80%);
+}
+
+.about-photo-fallback span {
+    background: rgba(255,255,255,.8);
+    border-radius: 100px;
+    padding: 8px 14px;
+}
+
+.about-page-layout .about-intro-text h2 {
+    font-size: clamp(2rem, 2.2vw, 2.45rem);
+    margin-bottom: 12px;
+}
+
+.about-page-layout .about-intro-text p {
+    font-size: 1.6rem;
+    line-height: 1.85;
+}
+
+.about-page-layout .about-intro-text .about-muted {
+    color: var(--about-muted);
+    margin-top: 5px;
+    font-size: 1.45rem;
+}
+
+.about-section {
+    margin-top: clamp(34px, 5vw, 54px);
+}
+
+.about-page-layout .about-landing .about-section-title {
+    font-size: clamp(1.8rem, 2.1vw, 2.15rem);
+    font-weight: 550;
+    margin-bottom: 20px;
+}
+
+.about-icon-library {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.about-interest-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 25px;
+}
+
+.about-interest {
+    padding: 14px 16px;
+    border: 1px solid transparent;
+    border-radius: 14px;
+    transition: background-color .2s ease, border-color .2s ease;
+}
+
+.about-interest:hover {
+    background: var(--about-soft);
+    border-color: var(--about-line);
+}
+
+.about-icon {
+    width: 23px;
+    height: 23px;
+    color: var(--about-accent);
+    margin-bottom: 7px;
+}
+
+.about-page-layout .about-interest h3 {
+    font-size: 1.85rem;
+    font-weight: 650;
+}
+
+.about-page-layout .about-interest p {
+    color: var(--about-muted);
+    font-size: 1.4rem;
+    margin-top: 3px;
+
+    // 保留 YAML 文字中的換行
+    white-space: pre-line;
+
+    // 避免過長文字擠出卡片
+    overflow-wrap: anywhere;
+    line-height: 1.8;
+}
+
+.about-timeline {
+    list-style: none;
+    margin: 0 0 0 9px;
+    padding: 3px 0 3px 24px;
+    border-left: 2px solid var(--about-line);
+}
+
+.about-timeline li {
+    position: relative;
+    margin-bottom: 19px;
+}
+
+.about-timeline li:last-child {
+    margin-bottom: 0;
+}
+
+.about-timeline li::before {
+    content: "";
+    position: absolute;
+    top: 11px;
+    left: -30px;
+    width: 10px;
+    height: 10px;
+    border: 2px solid var(--about-accent);
+    border-radius: 50%;
+    background: var(--card-background);
+}
+
+.about-time {
+    display: block;
+    color: var(--about-muted);
+    font-size: 1.35rem;
+}
+
+.about-page-layout .about-timeline p {
+    font-size: 1.55rem;
+}
+
+.about-now {
+    background: var(--about-soft);
+    border-radius: 15px;
+    padding: 16px 21px;
+}
+
+.about-page-layout .about-now p {
+    display: flex;
+    gap: 14px;
+    align-items: baseline;
+    padding: 8px 0;
+}
+
+.about-now p + p {
+    border-top: 1px solid var(--about-line);
+}
+
+.about-now span {
+    flex: 0 0 90px;
+    font-size: 1.4rem;
+    color: var(--about-muted);
+}
+
+.about-now strong {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.about-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.about-links a {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 14px;
+    border: 1px solid var(--about-line);
+    border-radius: 10px;
+    color: var(--card-text-color-main);
+    font-size: 1.45rem;
+    background: var(--card-background);
+    text-decoration: none;
+    transition: border-color .2s, background-color .2s;
+}
+
+.about-links a:hover,
+.about-links a:focus-visible {
+    border-color: var(--about-accent);
+    background: var(--about-soft);
+}
+
+.about-links a span {
+    color: var(--about-accent);
+}
+
+.about-extra {
+    padding: 0 clamp(24px, 4.5vw, 54px) 32px;
+}
+
+@media (max-width: 767px) {
+    .about-intro-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .about-photo,
+    .about-photo img,
+    .about-photo-fallback {
+        border-radius: 16px;
+    }
+    .about-interest-grid {
+        gap: 4px;
+    }
+    .about-interest {
+        padding: 12px 8px;
+    }
+}
+
+@media (max-width: 380px) {
+    .about-interest-grid {
+        grid-template-columns: 1fr;
+    }
+    .about-now p {
+        flex-wrap: wrap;
+        gap: 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .about-interest,
+    .about-links a { transition: none; }
+}
+
+
+/* 關於我的小事 */
+
+.about-facts-intro {
+    color: var(--about-muted);
+    font-size: 1.4rem;
+    margin-bottom: 20px !important;
+}
+
+.about-facts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 28px;
+}
+
+.about-fact {
+    padding: 8px 4px 8px 18px;
+    border-left: 2px solid var(--about-line);
+    min-width: 0;
+    transition: border-color 0.2s ease;
+}
+
+.about-fact:hover {
+    border-left-color: var(--about-accent);
+}
+
+.about-page-layout .about-fact h3 {
+    margin: 0 0 7px;
+    font-size: 1.65rem;
+    font-weight: 600;
+}
+
+.about-page-layout .about-fact p {
+    margin: 0;
+    color: var(--about-muted);
+    font-size: 1.4rem;
+    line-height: 1.85;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 700px) {
+    .about-facts-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+/* 關於我：興趣描述內的超連結 */
+.about-page-layout .about-interest p a {
+    color: var(--about-accent);
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
 /* ==========================================================
    Home Page Card
    ========================================================== */
@@ -2534,6 +2939,57 @@ html[data-scheme="dark"] {
     }
 
 }
+
+/* Add at the end of assets/scss/custom.scss (don't replace your other SCSS). */
+.article-content .blog-photo__link {
+    display: block;
+    max-width: 100%;
+    text-decoration: none;
+    border: 0;
+    cursor: zoom-in;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.article-content .blog-photo__link img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    border-radius: 12px;
+}
+
+.article-content .blog-photo__link:focus-visible {
+    outline: 3px solid var(--ds-text-secondary);
+    outline-offset: 4px;
+}
+
+/* PhotoSwipe toolbar: Open original WebP in new tab. */
+.pswp__button--open-original .pswp__icn {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.pswp__button--open-original[aria-disabled="true"] {
+    opacity: 0.35;
+    pointer-events: none;
+}
+
+/* Existing mobile rule said "all sizes full width" but excluded supersmall. */
+@media (max-width: 768px) {
+    .article-content .blog-photo--supersmall {
+        width: 100%;
+        max-width: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+
+
 /* ==========================================
    Site Stats
    ========================================== */
@@ -3301,3 +3757,4 @@ html[data-scheme="dark"] .guestbook-artalk {
   }
 
 }
+

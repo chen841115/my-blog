@@ -1,0 +1,164 @@
+{{ define "body-class" }}article-page about-page-layout{{ end }}
+
+{{ define "main" }}
+{{- $a := .Params.about -}}
+{{- $page := . -}}
+<article class="main-article">
+  <section class="article-content about-content">
+    <div class="about-landing">
+      <header class="about-cover">
+        <div class="about-eyebrow-line">
+          <span class="about-eyebrow">{{ $a.eyebrow | default "ABOUT ME / 關於我" }}</span>
+          <svg class="about-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 4c-9 0-15 4-15 11a5 5 0 0 0 5 5c7 0 11-6 10-16Z"/><path d="M5 20c2-4 5-7 11-10"/></svg>
+        </div>
+        <h1>{{ $a.greeting }}</h1>
+        <p class="about-subtitle">{{ $a.subtitle }}</p>
+        <div class="about-tags" aria-label="個人關鍵字">
+          {{ range $a.tags }}<span>{{ . }}</span>{{ end }}
+        </div>
+      </header>
+
+      <div class="about-intro-grid" id="about-intro">
+        <div class="about-photo">
+          {{ with $a.photo }}
+            <img src="{{ . | relURL }}" alt="{{ $a.photo_alt | default "關於我的生活照片" }}" loading="eager" decoding="async">
+          {{ else }}
+            <div class="about-photo-fallback" role="img" aria-label="等待放入你的風景照片">
+              <span>在這裡放一張喜歡的照片</span>
+            </div>
+          {{ end }}
+        </div>
+        <div class="about-intro-text">
+          <h2>01 / {{ $a.intro_title | default "一點自我介紹" }}</h2>
+          <p>{{ $a.intro }}</p>
+          <p class="about-muted">{{ $a.intro_note }}</p>
+        </div>
+      </div>
+
+      <section class="about-section" id="about-interests">
+        <h2 class="about-section-title">02 / 與我有關的關鍵字</h2>
+        <svg class="about-icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <symbol id="about-camera" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3"/><path d="m8 6 1.5-2h5L16 6"/></symbol>
+          <symbol id="about-mountain" viewBox="0 0 24 24"><path d="m2.5 20 7.5-15 4 8 2-4 5.5 11h-19Z"/></symbol>
+          <symbol id="about-book" viewBox="0 0 24 24"><path d="M12 6C9 3.9 6 4 3 5v14c3-1 6-1.1 9 1m0-14c3-2.1 6-2 9-1v14c-3-1-6-1.1-9 1m0-14v14"/></symbol>
+          <symbol id="about-coffee" viewBox="0 0 24 24"><path d="M4 8h13v7a6.5 6.5 0 0 1-13 0V8Zm13 1h2a3 3 0 0 1 0 6h-2M3 21h16M8 3v2m5-2v2"/></symbol>
+          <!-- 音樂：雙音符 -->
+          <symbol id="about-music" viewBox="0 0 24 24"><path d="M9 18V5l11-2v13M9 9l11-2"/><ellipse cx="6" cy="18" rx="3" ry="2"/><ellipse cx="17" cy="16" rx="3" ry="2"/></symbol>
+          <!-- 戲劇：喜劇與悲劇面具 -->
+          <symbol id="about-drama" viewBox="0 0 24 24">
+            <path d="M3 5c3-1.6 6.5-1.6 10 0l.5 7.4c.2 3.2-1.9 5.5-5.2 6.7C5 18 3 15.8 3 12.5V5Z"/>
+            <path d="M13.3 5.4c2.5-.8 5.2-.8 7.7.3v6.8c0 3.1-1.7 5.1-4.5 6.5-1.2-.4-2.3-1-3.2-1.8"/>
+            <path d="M6.5 9h.01M10 9h.01M6.3 13c1.2 1.5 2.5 1.5 3.8 0M16 9h.01M19 9h.01M15.5 14.4c1.1-1.2 2.1-1.2 3.2 0"/>
+          </symbol>
+          <!-- 棒球：棒球與縫線 -->
+          <symbol id="about-baseball" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M7 4.5c2.1 2.1 3.1 4.6 3.1 7.5s-1 5.4-3.1 7.5M17 4.5c-2.1 2.1-3.1 4.6-3.1 7.5s1 5.4 3.1 7.5"/>
+            <path d="m6.6 7.4 2.1.5m-2.7 3.5 2.4.2m-2 3.8 2.2-.7m8.8-6.8 2-.5m-2.5 4.2 2.4-.2m-2.8 3.3 2.2.7"/>
+          </symbol>
+          <!-- 跑步：跑者動作 -->
+          <symbol id="about-running" viewBox="0 0 24 24">
+            <circle cx="17.5" cy="4" r="2"/>
+            <path d="m14.2 8-4 4-4.2.5m8.2-4.5 3.5 2.5 2.8.5M14.2 8l-2.3 5.6m0 0 4.2 3.3L20 18m-8.1-4.4-2.2 5.1L5 21"/>
+          </symbol>
+          <!-- 閱讀：人物與打開的書 -->
+          <symbol id="about-reading" viewBox="0 0 24 24">
+            <circle cx="12" cy="4.2" r="2.1"/>
+            <path d="M7.5 9.5c.5-1.5 2.1-2.5 4.5-2.5s4 1 4.5 2.5"/>
+            <path d="M12 12c-2.8-1.8-5.7-2.1-9-1v9c3-1.2 6.1-.9 9 1 2.9-1.9 6-2.2 9-1v-9c-3.3-1.1-6.2-.8-9 1Zm0 0v9"/>
+          </symbol>
+          <!-- 部落格：網頁與編輯筆 -->
+          <symbol id="about-blog" viewBox="0 0 24 24">
+            <rect x="2.5" y="3.5" width="19" height="17" rx="2.5"/>
+            <path d="M2.5 8h19M6.2 5.8h.01M9.1 5.8h.01M6 11.5h8M6 14.5h5"/>
+            <path d="m14.3 16.6 3.9-4a1.3 1.3 0 0 1 1.9 1.8l-4 4-2.8.8 1-2.6Z"/>
+          </symbol>
+          <!-- 我的另一面：雙面表情與星星 -->
+          <symbol id="about-another-side-of-me" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M12 3v18M7.4 10h.01M6.6 14.5c1.2 1.6 2.6 1.6 3.8 0"/>
+            <path d="m16.5 7.3.9 2.4 2.4.9-2.4.9-.9 2.4-.9-2.4-2.4-.9 2.4-.9.9-2.4Z"/>
+          </symbol>
+          
+          <!-- 嗜好 -->
+          <symbol id="about-hobby" viewBox="0 0 24 24">
+            <path d="M9 3H5a2 2 0 0 0-2 2v4h1.3a2 2 0 1 1 0 4H3v6a2 2 0 0 0 2 2h4v-1.3a2 2 0 1 1 4 0V21h6a2 2 0 0 0 2-2v-4h-1.3a2 2 0 1 1 0-4H21V5a2 2 0 0 0-2-2h-6v1.3a2 2 0 1 1-4 0V3Z"/>
+          </symbol>
+
+          <!-- 下班後做什麼 -->
+          <symbol id="about-after-work" viewBox="0 0 24 24">
+            <rect x="3" y="10" width="13" height="10" rx="2"/>
+            <path d="M6.5 10V8a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 14h13M8.5 14v2h2v-2"/>
+            <path d="M20.2 3.2a4.5 4.5 0 0 0 .4 8.1 4.7 4.7 0 1 1-.4-8.1Z"/>
+          </symbol>
+
+
+        </svg>
+        <div class="about-interest-grid">
+          {{ range $a.interests }}
+          <div class="about-interest">
+            <svg class="about-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><use href="#about-{{ .icon }}" /></svg>
+            <h3>{{ .title }}</h3>
+            <p>{{ $page.RenderString (dict "display" "inline") .desc }}</p>
+          </div>
+          {{ end }}
+        </div>
+      </section>
+
+      
+      {{ with $a.facts }}
+      <section class="about-section" id="about-facts">
+        <h2 class="about-section-title">
+          03 / 一些不太重要的小事
+        </h2>
+
+        <p class="about-facts-intro">
+          沒有什麼特別的分類，只是一些關於我的奇怪小細節。
+        </p>
+
+        <div class="about-facts-grid">
+          {{ range . }}
+          <div class="about-fact">
+            <h3>{{ .title }}</h3>
+            <p>{{ $page.RenderString (dict "display" "inline") .desc }}</p>
+          </div>
+          {{ end }}
+        </div>
+      </section>
+      {{ end }}
+
+
+      <section class="about-section" id="about-timeline">
+        <h2 class="about-section-title">04 / 人生片段</h2>
+        <ol class="about-timeline">
+          {{ range $a.timeline }}
+          <li><span class="about-time">{{ .when }}</span><p>{{ .text }}</p></li>
+          {{ end }}
+        </ol>
+      </section>
+
+      {{ with $a.now }}
+      <section class="about-section" id="about-now">
+        <h2 class="about-section-title">05 / 最近的我</h2>
+        <div class="about-now">
+          {{ range . }}
+          <p><span>{{ .label }}</span><strong>{{ .value }}</strong></p>
+          {{ end }}
+        </div>
+      </section>
+      {{ end }}
+
+      {{ with $a.links }}
+      <section class="about-section" id="about-links">
+        <h2 class="about-section-title">06 / 從這裡開始認識我</h2>
+        <nav class="about-links" aria-label="推薦瀏覽">
+          {{ range . }}<a href="{{ .url | relURL }}">{{ .label }} <span aria-hidden="true">↗</span></a>{{ end }}
+        </nav>
+      </section>
+      {{ end }}
+    </div>
+    {{ with .Content }}<div class="about-extra">{{ . }}</div>{{ end }}
+  </section>
+</article>
+{{ partialCached "footer/footer" . }}
+{{ end }}
