@@ -1,0 +1,80 @@
+{{ define "body-class" }}now-microblog-layout{{ end }}
+{{ define "main" }}
+<!-- NOW-MICROBLOG-V2: 如在頁面原始碼看到此註記，代表專屬模板已載入 -->
+<section class="now-feed" data-now-feed-template="microblog-v2">
+  <header class="now-feed__header">
+    <p class="now-feed__eyebrow">LIFE LATELY</p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Content }}
+      <div class="now-feed__intro">{{ . }}</div>
+    {{ end }}
+  </header>
+
+  {{/* 排除舊月份文章；保留一般近況（包含沒有 title 的貼文） */}}
+  {{ $posts := where .RegularPages "Params.now_archive" "ne" true }}
+  {{ $paginator := .Paginate ($posts.ByDate.Reverse) 8 }}
+  {{ range $paginator.Pages }}
+    {{ $post := . }}
+    <article class="now-post soft-paper-card" id="now-{{ .Date.Format "20060102" }}-{{ .File.ContentBaseName | urlize }}">
+      <div class="now-post__top">
+        <time class="now-post__date" datetime="{{ .Date.Format "2006-01-02" }}">
+          <span class="now-post__dot" aria-hidden="true"></span>
+          {{ .Date.Format "2006 / 01 / 02" }}
+        </time>
+        {{ with .Params.topics }}
+          <div class="now-post__topics">
+            {{ range . }}<span class="now-post__topic">{{ . }}</span>{{ end }}
+          </div>
+        {{ end }}
+      </div>
+
+      {{ with .Params.title }}<h2 class="now-post__title">{{ . }}</h2>{{ end }}
+
+      {{ with .Params.image }}
+        {{ $path := . }}
+        {{ $asset := resources.Get $path }}
+        <figure class="now-post__image">
+          {{ if $asset }}
+            {{ $optimized := $asset.Resize "1200x webp q84" }}
+            <img src="{{ $optimized.RelPermalink }}"
+                 width="{{ $optimized.Width }}" height="{{ $optimized.Height }}"
+                 alt="{{ default "近況照片" $post.Params.imagealt }}" loading="lazy">
+          {{ else }}
+            <img src="{{ $path | relURL }}"
+                 alt="{{ default "近況照片" $post.Params.imagealt }}" loading="lazy">
+          {{ end }}
+        </figure>
+      {{ end }}
+
+      {{ if .Params.expand }}
+        {{ with .Params.preview }}<p class="now-post__preview">{{ . }}</p>{{ end }}
+        <details class="now-post__details">
+          <summary>繼續閱讀</summary>
+          <div class="now-post__content">{{ .Content }}</div>
+        </details>
+      {{ else }}
+        <div class="now-post__content">{{ .Content }}</div>
+      {{ end }}
+
+      <footer class="now-post__footer">
+        <a href="{{ .RelPermalink }}" aria-label="查看這則近況的獨立頁面">單則連結 ↗</a>
+      </footer>
+    </article>
+  {{ else }}
+    <p class="now-feed__empty">還沒有近況，等著記錄第一件小事。</p>
+  {{ end }}
+
+  {{ if gt $paginator.TotalPages 1 }}
+    <nav class="now-feed__pagination" aria-label="近況分頁">
+      <span>{{ with $paginator.Prev }}<a href="{{ .URL }}">← 較新的近況</a>{{ end }}</span>
+      <span>{{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+      <span>{{ with $paginator.Next }}<a href="{{ .URL }}">較早的近況 →</a>{{ end }}</span>
+    </nav>
+  {{ end }}
+
+  {{ with .Params.archiveurl }}
+    <p class="now-feed__archive"><a href="{{ . | relURL }}">查看過去封存的近況 →</a></p>
+  {{ end }}
+</section>
+{{ partial "footer/footer" . }}
+{{ end }}

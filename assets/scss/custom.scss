@@ -2687,6 +2687,375 @@ html[data-scheme="dark"] {
     opacity: 0.65;
 }
 
+/* 將以下內容附加到專案現有的 assets/scss/custom.scss */
+.now-feed {
+    --now-accent: #39735b;
+    width: 100%;
+    max-width: 880px;
+    margin-inline: auto;
+    color: var(--card-text-color-main);
+}
+
+[data-scheme="dark"] .now-feed {
+    --now-accent: #8dbba2;
+}
+
+.now-feed__header {
+    margin: 0 0 28px;
+
+    h1 {
+        font-size: clamp(1.8rem, 3vw, 2.15rem);
+        line-height: 1.35;
+        margin: 5px 0 10px;
+    }
+}
+
+.now-feed__eyebrow {
+    font-size: 0.74rem;
+    letter-spacing: 0.17em;
+    color: var(--now-accent);
+    font-weight: 700;
+    margin: 0;
+}
+
+.now-feed__intro {
+    color: var(--card-text-color-secondary);
+    font-size: 0.95rem;
+    line-height: 1.8;
+
+    p { margin: 0; }
+}
+
+.now-post {
+    background: var(--card-background);
+    border: 1px solid var(--card-separator-color);
+    border-radius: 20px;
+    padding: clamp(20px, 3vw, 30px);
+    margin-bottom: 18px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.025);
+}
+
+.now-post__top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.now-post__date {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--card-text-color-secondary);
+    font-size: 0.82rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.now-post__dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--now-accent);
+}
+
+.now-post__topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.now-post__topic {
+    border-radius: 999px;
+    padding: 4px 10px;
+    font-size: 0.76rem;
+    line-height: 1.4;
+    color: var(--now-accent);
+    background: rgba(77, 128, 101, 0.10);
+}
+
+[data-scheme="dark"] .now-post__topic {
+    background: rgba(130, 185, 155, 0.14);
+}
+
+.now-post__title {
+    font-size: clamp(1.12rem, 2vw, 1.3rem);
+    font-weight: 700;
+    line-height: 1.5;
+    margin: 0 0 12px;
+}
+
+.now-post__content,
+.now-post__preview {
+    font-size: 16px;
+    line-height: 1.9;
+    overflow-wrap: anywhere;
+    color: var(--card-text-color-main);
+}
+
+.now-post__preview { margin: 0 0 12px; }
+.now-post__content > :first-child { margin-top: 0; }
+.now-post__content > :last-child { margin-bottom: 0; }
+.now-post__content p { margin: 0 0 1em; }
+.now-post__content a { color: var(--now-accent); text-decoration: underline; text-underline-offset: 3px; }
+
+.now-post__image { margin: 12px 0 18px; }
+.now-post__image img,
+.now-post__content img {
+    display: block;
+    width: 30%;
+    height: auto;
+    max-height: 540px;
+    object-fit: contain;
+    border-radius: 15px;
+}
+
+.now-post__details { margin-top: 12px; }
+.now-post__details summary {
+    cursor: pointer;
+    width: fit-content;
+    color: var(--now-accent);
+    font-weight: 600;
+    padding: 3px 0;
+}
+.now-post__details[open] .now-post__content { margin-top: 12px; }
+
+.now-post__footer {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid var(--card-separator-color);
+    margin-top: 18px;
+    padding-top: 13px;
+}
+
+.now-post__footer a,
+.now-feed__pagination a,
+.now-feed__archive a {
+    color: var(--card-text-color-secondary);
+    text-decoration: none;
+    font-size: 0.84rem;
+}
+
+.now-post__footer a:hover,
+.now-feed__pagination a:hover,
+.now-feed__archive a:hover { color: var(--now-accent); }
+
+.now-feed__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 26px 0;
+    font-size: 0.85rem;
+    color: var(--card-text-color-secondary);
+}
+
+.now-feed__archive { text-align: center; margin: 20px 0 34px; }
+.now-feed__empty { color: var(--card-text-color-secondary); }
+
+@media (max-width: 600px) {
+    .now-post { border-radius: 16px; margin-bottom: 13px; }
+    .now-feed__header { margin-bottom: 20px; }
+    .now-post__top { align-items: flex-start; }
+    .now-feed {
+        width: 100%;
+    }
+}
+/* 3. 控制卡片內側空白 */
+.now-feed .now-post {
+        padding: 18px;
+        margin-bottom: 12px;
+}
+
+
+/* ==========================================================
+   Now Microblog - Layout & Typography
+   ========================================================== */
+
+
+/* ==========================================================
+   Now - Sidebar Layout Fix
+   ========================================================== */
+
+@media (min-width: 1280px) {
+
+    body.now-microblog-layout {
+
+        /* 只隱藏近況頁的右側欄 */
+        .right-sidebar {
+            display: none;
+        }
+
+        /* 主內容利用剩餘空間 */
+        main.main {
+            flex: 1 1 0;
+            min-width: 0;
+        }
+    }
+}
+
+/* 保留動態牆內容寬度 */
+.now-feed {
+    width: 100%;
+    max-width: auto;
+    margin-inline: auto;
+    margin-left: 0;
+    margin-right: 0;
+    box-sizing: border-box;
+}
+
+
+/* =================================
+   頂部標題
+   ================================= */
+
+.now-feed__header {
+    margin-bottom: 24px;
+
+    h1 {
+        font-size: 32px;
+        line-height: 1.4;
+        margin: 6px 0 10px;
+    }
+}
+
+.now-feed__eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+}
+
+.now-feed__intro {
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+/* =================================
+   近況卡片
+   ================================= */
+
+.now-feed .now-post {
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    border-radius: 18px;
+}
+
+/* 日期和標籤 */
+.now-post__top {
+    margin-bottom: 12px;
+    gap: 10px;
+}
+
+.now-post__date {
+    font-size: 14px;
+    gap: 8px;
+}
+
+.now-post__topic {
+    font-size: 13px;
+    padding: 5px 11px;
+}
+
+/* 每則近況標題 */
+.now-post__title {
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 12px;
+}
+
+/* 內文 */
+.now-post__content,
+.now-post__preview {
+    font-size: 17px;
+    line-height: 1.85;
+}
+
+/* 縮短段落空白 */
+.now-post__content p {
+    margin-bottom: 0.75em;
+}
+
+/* 繼續閱讀 */
+.now-post__details {
+    margin-top: 8px;
+}
+
+.now-post__details summary {
+    font-size: 15px;
+}
+
+/* 單則連結：減少底部留白 */
+.now-post__footer {
+    margin-top: 10px;
+    padding-top: 8px;
+}
+
+.now-post__footer a {
+    font-size: 13px;
+}
+
+/* =================================
+   手機版
+   ================================= */
+
+@media (max-width: 767px) {
+
+    .now-feed {
+        width: 100%;
+    }
+
+    .now-feed__header h1 {
+        font-size: 28px;
+    }
+
+    .now-feed .now-post {
+        padding: 20px;
+        margin-bottom: 14px;
+    }
+
+    .now-post__title {
+        font-size: 20px;
+    }
+
+    .now-post__content,
+    .now-post__preview {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+}
+
+
+/* ==========================================================
+   Soft Paper Card - 暖白色卡片
+   ========================================================== */
+
+/* 淺色模式 */
+:root {
+    --soft-paper-bg: #FEFCF7;
+    --soft-paper-border: rgba(90, 110, 91, 0.12);
+}
+
+/* 深色模式 */
+[data-scheme="dark"] {
+    --soft-paper-bg: #303A35;
+    --soft-paper-border: rgba(180, 205, 185, 0.12);
+}
+
+/* 自訂頁面主卡片 */
+.soft-paper-card {
+    background: var(--soft-paper-bg) !important;
+    border-color: var(--soft-paper-border);
+    transition:
+        background-color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+
+
+
 /* ==========================================================
    Photo Gallery
    ========================================================== */
